@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -12,289 +11,186 @@
 
     <meta
         name="theme-color"
-        content="#02070d"
+        content="#080b12"
     >
 
-    <title>ECHO-01</title>
+    <title>UNKNOWN ENTITY</title>
 
     <link
         rel="stylesheet"
         href="style.css"
     >
-
 </head>
 
 
 <body>
 
-<div id="app">
+    <div class="app">
 
+        <!-- TOP BAR -->
 
-    <!-- TOP BAR -->
+        <header class="top-bar">
 
-    <header>
-
-        <div>
-
-            <span class="signal-dot"></span>
-
-            ECHO-01
-
-        </div>
-
-
-        <div id="connection">
-
-            SIGNAL ONLINE
-
-        </div>
-
-    </header>
-
-
-
-    <!-- MAIN HUD -->
-
-    <main>
-
-
-        <!-- WORLD MAP -->
-
-        <section class="map-section">
-
-            <div class="map-title">
-
-                PLANETARY SURVEILLANCE
-
+            <div class="system-name">
+                UNKNOWN ENTITY
             </div>
 
+            <div class="status">
+                <span class="status-dot"></span>
+                ONLINE
+            </div>
 
-            <div id="map">
+        </header>
 
 
-                <!-- CITY -->
+        <!-- MAIN AREA -->
+
+        <main class="main">
+
+            <!-- ENTITY DISPLAY -->
+
+            <section class="entity-section">
+
+                <div class="entity-container">
+
+                    <div
+                        id="entity"
+                        class="entity"
+                    >
+                        ◉_◉
+                    </div>
+
+                </div>
+
+
+                <div class="entity-name">
+                    ENTITY_001
+                </div>
 
                 <div
-                    class="location city"
-                    data-name="Veyra City"
+                    id="mood"
+                    class="mood"
                 >
-
-                    ●
-
-                    <span>
-                        VEYRA
-                    </span>
-
+                    MOOD: CONFUSED
                 </div>
 
+            </section>
 
-                <!-- RUINS -->
+
+            <!-- CONVERSATION -->
+
+            <section class="conversation">
 
                 <div
-                    class="location ruins"
-                    data-name="Unknown Ruins"
+                    id="messages"
+                    class="messages"
                 >
 
-                    ●
+                    <div class="message entity-message">
+
+                        <span class="message-label">
+                            ENTITY
+                        </span>
+
+                        <p>
+                            Where... am I?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INPUT -->
+
+                <div class="input-area">
+
+                    <input
+                        id="userInput"
+                        type="text"
+                        placeholder="Talk to the entity..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        id="sendButton"
+                        type="button"
+                    >
+                        SEND
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="stats">
+
+                <div class="stat">
 
                     <span>
-                        RUINS
+                        MEMORY
                     </span>
+
+                    <strong id="memory">
+                        0%
+                    </strong>
 
                 </div>
 
 
-                <!-- SIGNAL -->
-
-                <div
-                    class="location signal"
-                    data-name="Unknown Signal"
-                >
-
-                    ●
+                <div class="stat">
 
                     <span>
-                        SIGNAL
+                        TRUST
                     </span>
 
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- INFORMATION -->
-
-        <section class="information">
-
-
-            <!-- SATELLITE STATUS -->
-
-            <div class="panel">
-
-                <div class="panel-title">
-
-                    SATELLITE STATUS
+                    <strong id="trust">
+                        0%
+                    </strong>
 
                 </div>
 
 
-                <p>
+                <div class="stat">
 
-                    SYSTEM
+                    <span>
+                        UNDERSTANDING
+                    </span>
 
-                    <strong>
-                        ONLINE
+                    <strong id="understanding">
+                        1%
                     </strong>
-
-                </p>
-
-
-                <p>
-
-                    ORBIT
-
-                    <strong>
-                        STABLE
-                    </strong>
-
-                </p>
-
-
-                <p>
-
-                    SIGNAL
-
-                    <strong id="signal">
-                        72%
-                    </strong>
-
-                </p>
-
-
-                <p>
-
-                    ENERGY
-
-                    <strong>
-                        91%
-                    </strong>
-
-                </p>
-
-            </div>
-
-
-
-            <!-- EVENT PANEL -->
-
-            <div
-                id="event"
-                class="panel event"
-            >
-
-                <div class="panel-title">
-
-                    SYSTEM MESSAGE
 
                 </div>
 
+            </section>
 
-                <p>
-
-                    No anomalies detected.
-
-                </p>
-
-            </div>
+        </main>
 
 
-        </section>
+        <!-- BOTTOM BAR -->
 
-
-    </main>
-
-
-
-    <!-- NAVIGATION -->
-
-    <nav>
-
-
-        <button
-            class="active"
-            data-page="world"
-            type="button"
-        >
-
-            🌍
+        <footer class="bottom-bar">
 
             <span>
-                WORLD
+                ENTITY STATUS
             </span>
 
-        </button>
-
-
-
-        <button
-            data-page="signals"
-            type="button"
-        >
-
-            📡
-
-            <span>
-                SIGNALS
+            <span id="growth">
+                DEVELOPMENT: 0
             </span>
 
-        </button>
+        </footer>
+
+    </div>
 
 
+    <!-- JAVASCRIPT -->
 
-        <button
-            data-page="entity"
-            type="button"
-        >
-
-            🤖
-
-            <span>
-                ENTITY
-            </span>
-
-        </button>
-
-
-
-        <button
-            data-page="archive"
-            type="button"
-        >
-
-            📁
-
-            <span>
-                ARCHIVE
-            </span>
-
-        </button>
-
-
-    </nav>
-
-
-</div>
-
-
-
-<!-- JAVASCRIPT -->
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 
 </body>
 
