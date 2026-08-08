@@ -1,281 +1,32 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <meta
-        name="theme-color"
-        content="#030b15"
-    >
-
-    <title>DUMMIE // AI HUD</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummie Test</title>
 </head>
-
 
 <body>
 
-<div id="app">
+    <h1>DUMMIE ONLINE</h1>
 
-    <!-- TOP BAR -->
+    <input id="message" type="text" placeholder="Type something">
 
-    <header class="top-bar">
+    <button id="send">SEND</button>
 
-        <div class="brand">
+    <p id="response">Waiting...</p>
 
-            <span class="brand-mark">
-                ◈
-            </span>
+    <script>
+        document.getElementById("send").onclick = function () {
 
-            <span>
-                DUMMIE
-            </span>
+            const message =
+                document.getElementById("message").value;
 
-        </div>
+            document.getElementById("response").textContent =
+                "Dummie heard: " + message;
 
-
-        <div class="system-status">
-
-            <span
-                id="status-dot"
-                class="status-dot"
-            ></span>
-
-            <span id="system-status">
-                SYSTEM ONLINE
-            </span>
-
-        </div>
-
-    </header>
-
-
-    <!-- MAIN HUD -->
-
-    <main class="hud">
-
-
-        <!-- LEFT SYSTEM PANEL -->
-
-        <section class="hud-panel panel-left">
-
-            <div class="panel-title">
-                SYSTEM
-            </div>
-
-            <div class="data-row">
-                <span>CORE</span>
-                <strong>ONLINE</strong>
-            </div>
-
-            <div class="data-row">
-                <span>AI</span>
-                <strong id="ai-status">
-                    READY
-                </strong>
-            </div>
-
-            <div class="data-row">
-                <span>VOICE</span>
-                <strong>ACTIVE</strong>
-            </div>
-
-            <div class="data-row">
-                <span>NETWORK</span>
-                <strong>LOCAL</strong>
-            </div>
-
-        </section>
-
-
-        <!-- RIGHT TELEMETRY PANEL -->
-
-        <section class="hud-panel panel-right">
-
-            <div class="panel-title">
-                TELEMETRY
-            </div>
-
-            <div class="data-row">
-                <span>TIME</span>
-                <strong id="hud-time">
-                    --:--
-                </strong>
-            </div>
-
-            <div class="data-row">
-                <span>DATE</span>
-                <strong id="hud-date">
-                    ----
-                </strong>
-            </div>
-
-            <div class="data-row">
-                <span>MODE</span>
-                <strong>PERSONAL</strong>
-            </div>
-
-        </section>
-
-
-        <!-- AI CORE -->
-
-        <section
-            class="core-area"
-            id="core-area"
-        >
-
-            <div class="core-ring ring-one"></div>
-
-            <div class="core-ring ring-two"></div>
-
-            <div class="core-ring ring-three"></div>
-
-
-            <div class="core-core">
-
-                <div class="core-symbol">
-                    ◈
-                </div>
-
-                <div class="core-label">
-                    DUMMIE
-                </div>
-
-                <div
-                    id="core-state"
-                    class="core-state"
-                >
-                    READY
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- RESPONSE -->
-
-        <section
-            id="speech-bubble"
-            class="speech-bubble"
-        >
-
-            <div
-                id="speech-name"
-                class="speech-name"
-            >
-                DUMMIE
-            </div>
-
-            <div
-                id="speech-text"
-                class="speech-text"
-            >
-                Systems online.
-                Hello, Creator.
-            </div>
-
-        </section>
-
-
-        <!-- DECORATION -->
-
-        <div class="scan-line"></div>
-
-        <div class="crosshair top-left">+</div>
-
-        <div class="crosshair top-right">+</div>
-
-        <div class="crosshair bottom-left">+</div>
-
-        <div class="crosshair bottom-right">+</div>
-
-
-        <!-- COMMAND AREA -->
-
-        <section class="command-area">
-
-            <div class="command-label">
-                COMMAND INTERFACE
-            </div>
-
-
-            <div class="command-row">
-
-                <button
-                    id="mic-button"
-                    class="mic-button"
-                    type="button"
-                    aria-label="Voice command"
-                >
-                    🎙
-                </button>
-
-
-                <input
-                    id="text-input"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="Speak or type a command..."
-                >
-
-
-                <button
-                    id="send-button"
-                    class="send-button"
-                    type="button"
-                    aria-label="Send command"
-                >
-                    ➤
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- FOOTER -->
-
-        <section class="bottom-data">
-
-            <span>
-                DUMMIE CORE v0.2
-            </span>
-
-            <span>
-                AI ASSISTANT PROTOTYPE
-            </span>
-
-            <span>
-                <span class="tiny-dot"></span>
-                OPERATIONAL
-            </span>
-
-        </section>
-
-
-    </main>
-
-</div>
-
-
-<script src="script.js"></script>
+        };
+    </script>
 
 </body>
-
 </html>
-```
