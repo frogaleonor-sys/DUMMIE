@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta name="theme-color" content="#080808">
+
+    <title>Dummie — Personal AI</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         DUMMIE APP
+         ========================================= -->
+
+    <main id="app">
+
+        <!-- Top status bar -->
+        <header class="top-bar">
+
+            <div class="brand">
+                <span class="spider-symbol">🕷️</span>
+                <span>DUMMIE</span>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                ONLINE
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             MAIN ASSISTANT AREA
+             ========================================= -->
+
+        <section id="assistant-area">
+
+            <!-- Conversation / speech bubble -->
+            <div
+                id="speech-bubble"
+                class="speech-bubble hidden"
+            >
+
+                <div id="speech-name">
+                    DUMMIE
+                </div>
+
+                <div id="speech-text">
+                    Hey! I'm Dummie.
+                </div>
+
+            </div>
+
+
+            <!-- Spider-Man style character -->
+            <div
+                id="dummie-character"
+                class="character"
+                role="button"
+                aria-label="Talk to Dummie"
+                tabindex="0"
+            >
+
+                <!-- Character head -->
+                <div class="head">
+
+                    <div class="eye left-eye"></div>
+                    <div class="eye right-eye"></div>
+
+                </div>
+
+                <!-- Character body -->
+                <div class="body">
+
+                    <div class="spider-emblem">
+                        🕷️
+                    </div>
+
+                </div>
+
+                <!-- Character legs -->
+                <div class="leg left-leg"></div>
+                <div class="leg right-leg"></div>
+
+                <!-- Character arms -->
+                <div class="arm left-arm"></div>
+                <div class="arm right-arm"></div>
+
+            </div>
+
+
+            <!-- Floor -->
+            <div class="floor">
+
+                <div class="floor-line"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CONTROL PANEL
+             ========================================= -->
+
+        <section class="control-panel">
+
+            <div class="instruction">
+                Tap Dummie to talk
+            </div>
+
+            <button
+                id="mic-button"
+                class="mic-button"
+                type="button"
+                aria-label="Talk to Dummie"
+            >
+                🎙️
+            </button>
+
+            <div class="command-input">
+
+                <input
+                    id="text-input"
+                    type="text"
+                    placeholder="Talk to Dummie..."
+                    autocomplete="off"
+                    enterkeyhint="send"
+                >
+
+                <button
+                    id="send-button"
+                    type="button"
+                    aria-label="Send message"
+                >
+                    ➤
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             INFORMATION PANEL
+             ========================================= -->
+
+        <section class="info-panel">
+
+            <div class="info-item">
+                <span class="info-label">SYSTEM</span>
+                <span class="info-value">DUMMIE v0.1</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">STATUS</span>
+                <span
+                    id="system-status"
+                    class="info-value"
+                >
+                    READY
+                </span>
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FOOTER
+             ========================================= -->
+
+        <footer>
+
+            <span>PERSONAL AI ASSISTANT</span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+              </html>
