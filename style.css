@@ -1,18 +1,23 @@
 ```css
 /* =========================================================
-   DUMMIE // FUTURISTIC AI HUD
-   MOBILE + DESKTOP + PORTRAIT + LANDSCAPE
+   DUMMIE HUD
+   MOBILE + PORTRAIT + LANDSCAPE + DESKTOP
    ========================================================= */
+
 
 * {
     box-sizing: border-box;
+
     margin: 0;
     padding: 0;
+
     -webkit-tap-highlight-color: transparent;
 }
 
+
 html,
 body {
+
     width: 100%;
     height: 100%;
 
@@ -20,16 +25,19 @@ body {
 
     background: #030b15;
 
+    color: #dffaff;
+
     font-family:
         "Segoe UI",
         Arial,
         sans-serif;
-
-    color: #dffaff;
 }
 
+
 body {
+
     min-height: 100dvh;
+
 }
 
 
@@ -37,7 +45,9 @@ body {
    APP
    ========================================================= */
 
+
 #app {
+
     position: relative;
 
     width: 100%;
@@ -47,20 +57,21 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 45%,
+            circle at center,
             #123652 0%,
-            #071a2b 32%,
-            #030b15 72%,
+            #071a2b 35%,
+            #030b15 75%,
             #01050b 100%
         );
+
 }
 
 
-/* =========================================================
-   HOLOGRAPHIC GRID
-   ========================================================= */
+/* GRID */
+
 
 #app::before {
+
     content: "";
 
     position: absolute;
@@ -70,30 +81,28 @@ body {
     pointer-events: none;
 
     background-image:
+
         linear-gradient(
-            rgba(60, 200, 255, 0.055) 1px,
+            rgba(60, 200, 255, 0.045) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
-            rgba(60, 200, 255, 0.055) 1px,
+            rgba(60, 200, 255, 0.045) 1px,
             transparent 1px
         );
 
-    background-size:
-        30px 30px;
+    background-size: 30px 30px;
 
-    opacity: 0.5;
-
-    z-index: 0;
 }
 
 
-/* =========================================================
-   VIGNETTE
-   ========================================================= */
+/* VIGNETTE */
+
 
 #app::after {
+
     content: "";
 
     position: absolute;
@@ -105,11 +114,10 @@ body {
     background:
         radial-gradient(
             ellipse at center,
-            transparent 35%,
+            transparent 40%,
             rgba(0, 0, 0, 0.5) 100%
         );
 
-    z-index: 2;
 }
 
 
@@ -117,7 +125,9 @@ body {
    TOP BAR
    ========================================================= */
 
+
 .top-bar {
+
     position: absolute;
 
     top: 0;
@@ -133,30 +143,24 @@ body {
     justify-content: space-between;
 
     padding:
-        0 max(15px, env(safe-area-inset-left))
-        0 max(15px, env(safe-area-inset-right));
+        0 16px;
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(5, 25, 43, 0.96),
-            rgba(4, 15, 27, 0.75)
-        );
+        rgba(3, 17, 30, 0.94);
 
     border-bottom:
         1px solid rgba(60, 215, 255, 0.3);
 
-    backdrop-filter: blur(10px);
-
     z-index: 20;
+
 }
 
 
-/* =========================================================
-   BRAND
-   ========================================================= */
+/* BRAND */
+
 
 .brand {
+
     display: flex;
 
     align-items: center;
@@ -170,24 +174,26 @@ body {
     letter-spacing: 4px;
 
     text-shadow:
-        0 0 12px rgba(60, 220, 255, 0.7);
+        0 0 12px
+        rgba(60, 220, 255, 0.7);
+
 }
 
+
 .brand-mark {
+
     color: #ff3155;
 
     font-size: 21px;
 
-    text-shadow:
-        0 0 10px rgba(255, 40, 80, 0.8);
 }
 
 
-/* =========================================================
-   SYSTEM STATUS
-   ========================================================= */
+/* STATUS */
+
 
 .system-status {
+
     display: flex;
 
     align-items: center;
@@ -198,10 +204,13 @@ body {
 
     font-size: 8px;
 
-    letter-spacing: 1.8px;
+    letter-spacing: 1.5px;
+
 }
 
+
 .status-dot {
+
     width: 7px;
     height: 7px;
 
@@ -210,29 +219,35 @@ body {
     background: #43ffad;
 
     box-shadow:
-        0 0 7px #43ffad;
+        0 0 8px #43ffad;
+
 }
 
 
 /* =========================================================
-   MAIN HUD
+   HUD
    ========================================================= */
 
+
 .hud {
+
     position: absolute;
 
     inset:
         58px 0 0 0;
 
     z-index: 5;
+
 }
 
 
 /* =========================================================
-   HUD PANELS
+   PANELS
    ========================================================= */
 
+
 .hud-panel {
+
     position: absolute;
 
     top: 18px;
@@ -242,50 +257,40 @@ body {
     padding: 12px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(8, 39, 62, 0.65),
-            rgba(3, 17, 30, 0.62)
-        );
+        rgba(5, 28, 46, 0.7);
 
     border:
-        1px solid rgba(60, 210, 255, 0.27);
+        1px solid
+        rgba(60, 210, 255, 0.27);
 
-    box-shadow:
-        inset 0 0 18px rgba(20, 180, 255, 0.035);
+    z-index: 8;
 
-    backdrop-filter: blur(7px);
-
-    clip-path:
-        polygon(
-            0 0,
-            calc(100% - 10px) 0,
-            100% 10px,
-            100% 100%,
-            0 100%
-        );
 }
+
 
 .panel-left {
+
     left: 14px;
+
 }
+
 
 .panel-right {
+
     right: 14px;
+
 }
 
 
-/* =========================================================
-   PANEL TITLE
-   ========================================================= */
-
 .panel-title {
+
     margin-bottom: 10px;
 
     padding-bottom: 6px;
 
     border-bottom:
-        1px solid rgba(70, 210, 255, 0.2);
+        1px solid
+        rgba(70, 210, 255, 0.2);
 
     color: #51d9ff;
 
@@ -294,14 +299,12 @@ body {
     font-weight: 800;
 
     letter-spacing: 2px;
+
 }
 
 
-/* =========================================================
-   DATA
-   ========================================================= */
-
 .data-row {
+
     display: flex;
 
     justify-content: space-between;
@@ -313,28 +316,37 @@ body {
     font-size: 7px;
 
     letter-spacing: 0.8px;
+
 }
+
 
 .data-row span {
+
     color: #527e91;
+
 }
 
+
 .data-row strong {
+
     color: #9de9ff;
 
     font-weight: 600;
+
 }
 
 
 /* =========================================================
-   CORE AREA
+   CORE
    ========================================================= */
 
+
 .core-area {
+
     position: absolute;
 
     left: 50%;
-    top: 47%;
+    top: 46%;
 
     width: min(55vw, 260px);
     height: min(55vw, 260px);
@@ -347,14 +359,16 @@ body {
     align-items: center;
 
     justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 6;
+
 }
 
 
-/* =========================================================
-   CORE RINGS
-   ========================================================= */
-
 .core-ring {
+
     position: absolute;
 
     left: 50%;
@@ -365,57 +379,68 @@ body {
     transform:
         translate(-50%, -50%);
 
-    pointer-events: none;
 }
 
+
 .ring-one {
+
     width: 100%;
     height: 100%;
 
     border:
-        1px solid rgba(55, 220, 255, 0.25);
+        1px solid
+        rgba(55, 220, 255, 0.25);
 
     border-top-color:
         rgba(55, 220, 255, 0.85);
 
     animation:
-        spinSlow 12s linear infinite;
+        spinOne 12s linear infinite;
+
 }
 
+
 .ring-two {
+
     width: 78%;
     height: 78%;
 
     border:
-        1px dashed rgba(55, 220, 255, 0.4);
+        1px dashed
+        rgba(55, 220, 255, 0.4);
 
     border-right-color:
         rgba(255, 45, 80, 0.75);
 
     animation:
-        spinReverse 8s linear infinite;
+        spinTwo 8s linear infinite;
+
 }
 
+
 .ring-three {
+
     width: 58%;
     height: 58%;
 
     border:
-        1px solid rgba(255, 50, 80, 0.35);
+        1px solid
+        rgba(255, 50, 80, 0.35);
 
     border-left-color:
         rgba(255, 50, 80, 0.9);
 
     animation:
-        spinSlow 6s linear infinite;
+        spinOne 6s linear infinite;
+
 }
 
 
-/* =========================================================
-   CORE
-   ========================================================= */
+/* CORE CENTER */
+
 
 .core-core {
+
     position: relative;
 
     width: 37%;
@@ -440,27 +465,31 @@ body {
         );
 
     border:
-        1px solid rgba(100, 230, 255, 0.8);
+        1px solid
+        rgba(100, 230, 255, 0.8);
 
     box-shadow:
-        0 0 18px rgba(35, 210, 255, 0.45),
-        inset 0 0 20px rgba(60, 220, 255, 0.18);
+        0 0 18px
+        rgba(35, 210, 255, 0.45);
 
-    z-index: 3;
 }
 
+
 .core-symbol {
+
     color: #cfffff;
 
     font-size: 24px;
 
-    line-height: 1;
-
     text-shadow:
-        0 0 10px rgba(80, 230, 255, 0.9);
+        0 0 10px
+        rgba(80, 230, 255, 0.9);
+
 }
 
+
 .core-label {
+
     margin-top: 6px;
 
     color: #d9faff;
@@ -470,9 +499,12 @@ body {
     font-weight: 800;
 
     letter-spacing: 2px;
+
 }
 
+
 .core-state {
+
     margin-top: 4px;
 
     color: #ff5270;
@@ -480,6 +512,30 @@ body {
     font-size: 6px;
 
     letter-spacing: 1.5px;
+
+}
+
+
+/* =========================================================
+   CORE STATES
+   ========================================================= */
+
+
+.core-area.listening .core-core {
+
+    box-shadow:
+        0 0 30px
+        rgba(50, 225, 255, 0.75);
+
+}
+
+
+.core-area.speaking .core-core {
+
+    box-shadow:
+        0 0 30px
+        rgba(255, 50, 85, 0.7);
+
 }
 
 
@@ -487,7 +543,9 @@ body {
    SPEECH
    ========================================================= */
 
+
 .speech-bubble {
+
     position: absolute;
 
     left: 50%;
@@ -499,33 +557,29 @@ body {
             460px
         );
 
-    padding: 12px 15px;
+    padding:
+        12px 15px;
 
     transform:
         translateX(-50%);
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(8, 35, 56, 0.88),
-            rgba(3, 15, 27, 0.88)
-        );
+        rgba(5, 25, 42, 0.9);
 
     border:
-        1px solid rgba(65, 215, 255, 0.35);
+        1px solid
+        rgba(65, 215, 255, 0.35);
 
     border-left:
         3px solid #f02c51;
 
-    box-shadow:
-        0 0 20px rgba(0, 150, 255, 0.08);
-
-    backdrop-filter: blur(8px);
-
     z-index: 8;
+
 }
 
+
 .speech-name {
+
     margin-bottom: 5px;
 
     color: #ff3d60;
@@ -535,14 +589,18 @@ body {
     font-weight: 800;
 
     letter-spacing: 2px;
+
 }
 
+
 .speech-text {
+
     color: #d8f7ff;
 
     font-size: 13px;
 
     line-height: 1.45;
+
 }
 
 
@@ -550,7 +608,9 @@ body {
    SCAN LINE
    ========================================================= */
 
+
 .scan-line {
+
     position: absolute;
 
     left: 15%;
@@ -568,9 +628,8 @@ body {
             transparent
         );
 
-    opacity: 0.45;
-
     pointer-events: none;
+
 }
 
 
@@ -578,37 +637,48 @@ body {
    CROSSHAIRS
    ========================================================= */
 
+
 .crosshair {
+
     position: absolute;
 
-    width: 20px;
-    height: 20px;
-
-    color: rgba(75, 215, 255, 0.5);
+    color:
+        rgba(75, 215, 255, 0.5);
 
     font-size: 14px;
 
-    z-index: 4;
 }
+
 
 .top-left {
+
     left: 15px;
     top: 105px;
+
 }
+
 
 .top-right {
+
     right: 15px;
     top: 105px;
+
 }
+
 
 .bottom-left {
+
     left: 15px;
     bottom: 110px;
+
 }
 
+
 .bottom-right {
+
     right: 15px;
     bottom: 110px;
+
 }
 
 
@@ -616,37 +686,33 @@ body {
    COMMAND AREA
    ========================================================= */
 
+
 .command-area {
+
     position: absolute;
 
     left: 0;
     right: 0;
+
     bottom: 42px;
 
     padding:
         10px 14px;
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(4, 20, 34, 0.55),
-            rgba(2, 10, 18, 0.94)
-        );
+        rgba(2, 13, 23, 0.94);
 
     border-top:
-        1px solid rgba(55, 210, 255, 0.25);
-
-    backdrop-filter: blur(8px);
+        1px solid
+        rgba(55, 210, 255, 0.25);
 
     z-index: 15;
+
 }
 
 
-/* =========================================================
-   COMMAND LABEL
-   ========================================================= */
-
 .command-label {
+
     margin-bottom: 7px;
 
     text-align: center;
@@ -656,14 +722,12 @@ body {
     font-size: 7px;
 
     letter-spacing: 2px;
+
 }
 
 
-/* =========================================================
-   COMMAND ROW
-   ========================================================= */
-
 .command-row {
+
     display: flex;
 
     align-items: center;
@@ -671,58 +735,86 @@ body {
     gap: 7px;
 
     width: 100%;
+
 }
 
 
-/* =========================================================
-   MIC
-   ========================================================= */
+/* BUTTONS */
 
-.mic-button {
+
+.mic-button,
+.send-button {
+
     flex:
         0 0 46px;
 
     width: 46px;
     height: 42px;
 
-    border:
-        1px solid rgba(70, 215, 255, 0.55);
-
     border-radius: 7px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #103c57,
-            #071a2b
-        );
-
-    color: #dfffff;
-
-    font-size: 17px;
 
     cursor: pointer;
 
     touch-action: manipulation;
+
+    font-size: 17px;
+
 }
 
-.mic-button:active {
-    transform: scale(0.94);
+
+.mic-button {
+
+    border:
+        1px solid
+        rgba(70, 215, 255, 0.55);
+
+    background:
+        #0b2d45;
+
+    color: white;
+
 }
+
+
+.send-button {
+
+    border:
+        1px solid
+        rgba(255, 55, 85, 0.65);
+
+    background:
+        #a91534;
+
+    color: white;
+
+}
+
+
+.mic-button:active,
+.send-button:active {
+
+    transform:
+        scale(0.94);
+
+}
+
 
 .mic-button.listening {
+
     border-color: #ff365a;
 
     box-shadow:
-        0 0 18px rgba(255, 40, 80, 0.5);
+        0 0 18px
+        rgba(255, 40, 80, 0.5);
+
 }
 
 
-/* =========================================================
-   INPUT
-   ========================================================= */
+/* INPUT */
+
 
 #text-input {
+
     flex: 1;
 
     min-width: 0;
@@ -733,79 +825,50 @@ body {
         0 12px;
 
     border:
-        1px solid rgba(65, 210, 255, 0.3);
+        1px solid
+        rgba(65, 210, 255, 0.3);
 
     border-radius: 7px;
 
     outline: none;
 
     background:
-        rgba(5, 26, 43, 0.85);
+        rgba(5, 26, 43, 0.9);
 
     color: #e8fbff;
 
     font-size: 13px;
+
 }
+
 
 #text-input::placeholder {
+
     color: #547d8d;
+
 }
 
+
 #text-input:focus {
+
     border-color:
         rgba(70, 220, 255, 0.75);
 
-    box-shadow:
-        0 0 12px rgba(50, 200, 255, 0.1);
 }
 
 
 /* =========================================================
-   SEND
+   FOOTER
    ========================================================= */
 
-.send-button {
-    flex:
-        0 0 45px;
-
-    width: 45px;
-    height: 42px;
-
-    border:
-        1px solid rgba(255, 55, 85, 0.65);
-
-    border-radius: 7px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #d92749,
-            #850d27
-        );
-
-    color: white;
-
-    font-size: 17px;
-
-    cursor: pointer;
-
-    touch-action: manipulation;
-}
-
-.send-button:active {
-    transform: scale(0.94);
-}
-
-
-/* =========================================================
-   BOTTOM DATA
-   ========================================================= */
 
 .bottom-data {
+
     position: absolute;
 
     left: 14px;
     right: 14px;
+
     bottom: 8px;
 
     display: flex;
@@ -819,9 +882,12 @@ body {
     letter-spacing: 1px;
 
     z-index: 20;
+
 }
 
+
 .tiny-dot {
+
     display: inline-block;
 
     width: 5px;
@@ -832,41 +898,54 @@ body {
     border-radius: 50%;
 
     background: #45ffae;
+
 }
 
 
 /* =========================================================
-   ANIMATIONS
+   ANIMATION
    ========================================================= */
 
-@keyframes spinSlow {
+
+@keyframes spinOne {
 
     from {
+
         transform:
             translate(-50%, -50%)
             rotate(0deg);
+
     }
 
     to {
+
         transform:
             translate(-50%, -50%)
             rotate(360deg);
+
     }
+
 }
 
-@keyframes spinReverse {
+
+@keyframes spinTwo {
 
     from {
+
         transform:
             translate(-50%, -50%)
             rotate(360deg);
+
     }
 
     to {
+
         transform:
             translate(-50%, -50%)
             rotate(0deg);
+
     }
+
 }
 
 
@@ -874,45 +953,67 @@ body {
    LANDSCAPE PHONE
    ========================================================= */
 
-@media (orientation: landscape) and (max-height: 600px) {
+
+@media
+(orientation: landscape)
+and (max-height: 600px) {
 
     .top-bar {
+
         height: 46px;
+
     }
+
 
     .hud {
+
         inset:
             46px 0 0 0;
+
     }
 
+
     .hud-panel {
+
         top: 10px;
 
         width: 135px;
 
         padding: 8px;
+
     }
 
+
     .core-area {
-        top: 43%;
+
+        top: 42%;
 
         width: min(40vh, 210px);
         height: min(40vh, 210px);
+
     }
+
 
     .speech-bubble {
-        top: 65%;
 
-        width: min(48%, 430px);
+        top: 63%;
+
+        width: min(50%, 430px);
 
         padding: 8px 12px;
+
     }
+
 
     .speech-text {
+
         font-size: 11px;
+
     }
 
+
     .command-area {
+
         left: 50%;
 
         width: 55%;
@@ -920,93 +1021,111 @@ body {
         transform:
             translateX(-50%);
 
-        bottom: 22px;
+        bottom: 20px;
 
-        padding: 6px 10px;
+        padding: 5px 8px;
+
     }
+
 
     .command-label {
+
         display: none;
+
     }
+
 
     .bottom-data {
-        bottom: 4px;
+
+        bottom: 3px;
+
     }
 
-    .crosshair.bottom-left,
-    .crosshair.bottom-right {
-        bottom: 60px;
-    }
 }
 
 
 /* =========================================================
-   VERY SMALL PORTRAIT
+   SMALL PHONES
    ========================================================= */
+
 
 @media (max-width: 380px) {
 
     .hud-panel {
-        width: 125px;
+
+        width: 120px;
 
         padding: 9px;
+
     }
+
 
     .panel-left {
-        left: 8px;
+
+        left: 7px;
+
     }
+
 
     .panel-right {
-        right: 8px;
+
+        right: 7px;
+
     }
+
 
     .core-area {
-        width: 210px;
-        height: 210px;
+
+        width: 205px;
+        height: 205px;
+
     }
+
 
     .speech-bubble {
-        top: 68%;
 
         width:
-            calc(100% - 28px);
+            calc(100% - 26px);
+
     }
 
-    .bottom-data {
-        font-size: 5px;
-    }
 }
 
 
 /* =========================================================
-   TABLET / DESKTOP
+   DESKTOP
    ========================================================= */
+
 
 @media (min-width: 700px) {
 
     #app {
-        max-width: 1000px;
+
+        max-width: 1100px;
 
         margin: 0 auto;
 
-        border-left:
-            1px solid rgba(60, 210, 255, 0.1);
-
-        border-right:
-            1px solid rgba(60, 210, 255, 0.1);
-
         box-shadow:
-            0 0 80px rgba(0, 130, 200, 0.12);
+            0 0 80px
+            rgba(0, 130, 200, 0.12);
+
     }
+
 
     .core-area {
+
         width: 300px;
         height: 300px;
+
     }
 
+
     .speech-bubble {
+
         width: 440px;
+
     }
+
 }
 
 
@@ -1014,11 +1133,15 @@ body {
    REDUCE MOTION
    ========================================================= */
 
+
 @media (prefers-reduced-motion: reduce) {
 
     .core-ring {
+
         animation: none;
+
     }
+
 }
 ```
-   
+       
