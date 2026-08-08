@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,144 +6,244 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
-    <meta name="theme-color" content="#080808">
+    <meta
+        name="theme-color"
+        content="#06111f"
+    >
 
-    <title>Dummie — Personal AI</title>
+    <title>DUMMIE // AI HUD</title>
 
-    <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
+<div id="app">
+
     <!-- =========================================
-         DUMMIE APP
+         TOP SYSTEM BAR
          ========================================= -->
 
-    <main id="app">
+    <header class="top-bar">
 
-        <!-- Top status bar -->
-        <header class="top-bar">
+        <div class="brand">
+            <span class="brand-mark">◈</span>
+            <span>DUMMIE</span>
+        </div>
 
-            <div class="brand">
-                <span class="spider-symbol">🕷️</span>
-                <span>DUMMIE</span>
+        <div class="system-status">
+
+            <span
+                id="status-dot"
+                class="status-dot"
+            ></span>
+
+            <span id="system-status">
+                SYSTEM ONLINE
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN HUD
+         ========================================= -->
+
+    <main class="hud">
+
+        <!-- Left / Top information -->
+
+        <section class="hud-panel panel-left">
+
+            <div class="panel-title">
+                SYSTEM
             </div>
 
-            <div class="status">
-                <span class="status-dot"></span>
-                ONLINE
+            <div class="data-row">
+                <span>CORE</span>
+                <strong>ONLINE</strong>
             </div>
 
-        </header>
+            <div class="data-row">
+                <span>AI STATUS</span>
+                <strong id="ai-status">
+                    READY
+                </strong>
+            </div>
+
+            <div class="data-row">
+                <span>VOICE</span>
+                <strong>
+                    ACTIVE
+                </strong>
+            </div>
+
+            <div class="data-row">
+                <span>NETWORK</span>
+                <strong>
+                    LOCAL
+                </strong>
+            </div>
+
+        </section>
 
 
-        <!-- =========================================
-             MAIN ASSISTANT AREA
-             ========================================= -->
+        <!-- Right information -->
 
-        <section id="assistant-area">
+        <section class="hud-panel panel-right">
 
-            <!-- Conversation / speech bubble -->
-            <div
-                id="speech-bubble"
-                class="speech-bubble hidden"
-            >
+            <div class="panel-title">
+                TELEMETRY
+            </div>
 
-                <div id="speech-name">
+            <div class="data-row">
+                <span>TIME</span>
+
+                <strong id="hud-time">
+                    --:--
+                </strong>
+            </div>
+
+            <div class="data-row">
+                <span>DATE</span>
+
+                <strong id="hud-date">
+                    ----
+                </strong>
+            </div>
+
+            <div class="data-row">
+                <span>MODE</span>
+
+                <strong>
+                    PERSONAL
+                </strong>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CENTRAL AI CORE
+             ===================================== -->
+
+        <section class="core-area">
+
+            <div class="core-ring ring-one"></div>
+
+            <div class="core-ring ring-two"></div>
+
+            <div class="core-ring ring-three"></div>
+
+            <div class="core-core">
+
+                <div class="core-symbol">
+                    ◈
+                </div>
+
+                <div class="core-label">
                     DUMMIE
                 </div>
 
-                <div id="speech-text">
-                    Hey! I'm Dummie.
+                <div
+                    id="core-state"
+                    class="core-state"
+                >
+                    READY
                 </div>
-
-            </div>
-
-
-            <!-- Spider-Man style character -->
-            <div
-                id="dummie-character"
-                class="character"
-                role="button"
-                aria-label="Talk to Dummie"
-                tabindex="0"
-            >
-
-                <!-- Character head -->
-                <div class="head">
-
-                    <div class="eye left-eye"></div>
-                    <div class="eye right-eye"></div>
-
-                </div>
-
-                <!-- Character body -->
-                <div class="body">
-
-                    <div class="spider-emblem">
-                        🕷️
-                    </div>
-
-                </div>
-
-                <!-- Character legs -->
-                <div class="leg left-leg"></div>
-                <div class="leg right-leg"></div>
-
-                <!-- Character arms -->
-                <div class="arm left-arm"></div>
-                <div class="arm right-arm"></div>
-
-            </div>
-
-
-            <!-- Floor -->
-            <div class="floor">
-
-                <div class="floor-line"></div>
 
             </div>
 
         </section>
 
 
-        <!-- =========================================
-             CONTROL PANEL
-             ========================================= -->
+        <!-- =====================================
+             RESPONSE
+             ===================================== -->
 
-        <section class="control-panel">
+        <section
+            id="speech-bubble"
+            class="speech-bubble"
+        >
 
-            <div class="instruction">
-                Tap Dummie to talk
+            <div
+                id="speech-name"
+                class="speech-name"
+            >
+                DUMMIE
             </div>
 
-            <button
-                id="mic-button"
-                class="mic-button"
-                type="button"
-                aria-label="Talk to Dummie"
+            <div
+                id="speech-text"
+                class="speech-text"
             >
-                🎙️
-            </button>
+                Systems online.
+                Hello, Creator.
+            </div>
 
-            <div class="command-input">
+        </section>
+
+
+        <!-- =====================================
+             DECORATIVE HUD ELEMENTS
+             ===================================== -->
+
+        <div class="scan-line"></div>
+
+        <div class="crosshair top-left">
+            +
+        </div>
+
+        <div class="crosshair top-right">
+            +
+        </div>
+
+        <div class="crosshair bottom-left">
+            +
+        </div>
+
+        <div class="crosshair bottom-right">
+            +
+        </div>
+
+
+        <!-- =====================================
+             COMMAND AREA
+             ===================================== -->
+
+        <section class="command-area">
+
+            <div class="command-label">
+                COMMAND INTERFACE
+            </div>
+
+            <div class="command-row">
+
+                <button
+                    id="mic-button"
+                    class="mic-button"
+                    aria-label="Voice command"
+                >
+                    🎙
+                </button>
 
                 <input
                     id="text-input"
                     type="text"
-                    placeholder="Talk to Dummie..."
                     autocomplete="off"
-                    enterkeyhint="send"
+                    placeholder="Speak or type a command..."
                 >
 
                 <button
                     id="send-button"
-                    type="button"
-                    aria-label="Send message"
+                    class="send-button"
+                    aria-label="Send command"
                 >
                     ➤
                 </button>
@@ -152,45 +253,34 @@
         </section>
 
 
-        <!-- =========================================
-             INFORMATION PANEL
-             ========================================= -->
+        <!-- =====================================
+             BOTTOM DATA
+             ===================================== -->
 
-        <section class="info-panel">
+        <section class="bottom-data">
 
-            <div class="info-item">
-                <span class="info-label">SYSTEM</span>
-                <span class="info-value">DUMMIE v0.1</span>
-            </div>
+            <span>
+                DUMMIE CORE v0.2
+            </span>
 
-            <div class="info-item">
-                <span class="info-label">STATUS</span>
-                <span
-                    id="system-status"
-                    class="info-value"
-                >
-                    READY
-                </span>
-            </div>
+            <span>
+                AI ASSISTANT PROTOTYPE
+            </span>
+
+            <span>
+                <span class="tiny-dot"></span>
+                OPERATIONAL
+            </span>
 
         </section>
 
-
-        <!-- =========================================
-             FOOTER
-             ========================================= -->
-
-        <footer>
-
-            <span>PERSONAL AI ASSISTANT</span>
-
-        </footer>
-
     </main>
 
+</div>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+
+<script src="script.js"></script>
 
 </body>
-              </html>
+</html>
+```
