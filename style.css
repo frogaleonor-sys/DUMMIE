@@ -1,1 +1,1200 @@
+/* =========================================================
+   DUMMIE // SPIDER HUD INTERFACE
+   ========================================================= */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #eafaff;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #173a5c 0%,
+            #0b2037 28%,
+            #06111f 62%,
+            #020812 100%
+        );
+}
+
+
+/* =========================================================
+   MAIN APP
+   ========================================================= */
+
+#app {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 190, 255, 0.035),
+            transparent 35%,
+            rgba(255, 25, 65, 0.035)
+        );
+}
+
+
+/* =========================================================
+   HOLOGRAPHIC GRID
+   ========================================================= */
+
+#app::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.25;
+
+    background-image:
+        linear-gradient(
+            rgba(70, 210, 255, 0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(70, 210, 255, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 35px 35px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   SPIDER WEB BACKGROUND
+   ========================================================= */
+
+#app::after {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 43%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    opacity: 0.12;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            transparent 0 45px,
+            rgba(75, 205, 255, 0.55) 46px 47px
+        );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.top-bar {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 27, 47, 0.94),
+            rgba(6, 20, 36, 0.72)
+        );
+
+    border-bottom:
+        1px solid rgba(50, 207, 255, 0.35);
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.3),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(14px);
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #e9faff;
+
+    text-shadow:
+        0 0 12px rgba(75, 220, 255, 0.7);
+}
+
+.spider-symbol {
+    font-size: 22px;
+
+    filter:
+        drop-shadow(
+            0 0 7px rgba(255, 35, 65, 0.8)
+        );
+}
+
+
+/* =========================================================
+   ONLINE STATUS
+   ========================================================= */
+
+.status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #8edfff;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #47ffb2;
+
+    box-shadow:
+        0 0 6px #47ffb2,
+        0 0 15px rgba(71, 255, 178, 0.8);
+
+    animation:
+        statusPulse 2s infinite;
+}
+
+
+/* =========================================================
+   MAIN ASSISTANT AREA
+   ========================================================= */
+
+#assistant-area {
+    position: absolute;
+
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 188px;
+
+    overflow: hidden;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   HUD CORNER MARKS
+   ========================================================= */
+
+#assistant-area::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 18px;
+
+    border-top:
+        1px solid rgba(62, 214, 255, 0.3);
+
+    border-left:
+        1px solid rgba(62, 214, 255, 0.3);
+
+    clip-path:
+        polygon(
+            0 0,
+            110px 0,
+            110px 2px,
+            2px 2px,
+            2px 110px,
+            0 110px
+        );
+
+    pointer-events: none;
+}
+
+#assistant-area::after {
+    content: "";
+
+    position: absolute;
+
+    right: 18px;
+    top: 18px;
+
+    width: 110px;
+    height: 110px;
+
+    border-top:
+        1px solid rgba(255, 45, 75, 0.35);
+
+    border-right:
+        1px solid rgba(255, 45, 75, 0.35);
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            calc(100% - 2px) 100%,
+            calc(100% - 2px) 2px,
+            0 2px
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SPEECH BUBBLE
+   ========================================================= */
+
+.speech-bubble {
+    position: absolute;
+
+    top: 10%;
+    left: 50%;
+
+    width: min(86%, 410px);
+
+    padding: 16px 18px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(10, 42, 67, 0.82),
+            rgba(4, 18, 33, 0.86)
+        );
+
+    border:
+        1px solid rgba(66, 216, 255, 0.55);
+
+    border-left:
+        3px solid #f1264d;
+
+    clip-path:
+        polygon(
+            0 0,
+            calc(100% - 14px) 0,
+            100% 14px,
+            100% 100%,
+            0 100%
+        );
+
+    box-shadow:
+        0 0 25px rgba(0, 185, 255, 0.12),
+        inset 0 0 30px rgba(0, 150, 255, 0.035);
+
+    backdrop-filter: blur(15px);
+
+    z-index: 20;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.speech-bubble::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 14px;
+
+    width: 45px;
+    height: 1px;
+
+    background: #ff3156;
+
+    box-shadow:
+        0 0 8px rgba(255, 40, 80, 0.8);
+}
+
+.speech-bubble::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -8px;
+    left: 50%;
+
+    width: 16px;
+    height: 16px;
+
+    background: #071728;
+
+    border-right:
+        1px solid rgba(66, 216, 255, 0.55);
+
+    border-bottom:
+        1px solid rgba(66, 216, 255, 0.55);
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+}
+
+.speech-bubble.hidden {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(12px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SPEECH TEXT
+   ========================================================= */
+
+#speech-name {
+    margin-bottom: 7px;
+
+    color: #ff3a5c;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 8px rgba(255, 40, 75, 0.7);
+}
+
+#speech-text {
+    color: #dff8ff;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    text-shadow:
+        0 0 5px rgba(100, 220, 255, 0.25);
+}
+
+
+/* =========================================================
+   CHARACTER
+   ========================================================= */
+
+.character {
+    position: absolute;
+
+    left: 50%;
+    bottom: 23px;
+
+    width: 76px;
+    height: 145px;
+
+    transform:
+        translateX(-50%);
+
+    cursor: pointer;
+
+    z-index: 15;
+
+    animation:
+        idleBounce 1.8s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 12px 15px rgba(0, 0, 0, 0.65)
+        );
+
+    user-select: none;
+
+    touch-action: manipulation;
+
+    transition:
+        filter 0.2s ease;
+}
+
+.character:hover {
+    filter:
+        drop-shadow(
+            0 0 15px rgba(255, 35, 65, 0.5)
+        );
+}
+
+.character:active {
+    transform:
+        translateX(-50%)
+        scale(0.92);
+}
+
+
+/* =========================================================
+   CHARACTER HEAD
+   ========================================================= */
+
+.head {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 62px;
+    height: 68px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        48% 48% 44% 44%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #ff586e,
+            #dc1234 48%,
+            #710a1d 100%
+        );
+
+    border:
+        2px solid #ff536b;
+
+    box-shadow:
+        inset -8px -8px 15px rgba(0, 0, 0, 0.35),
+        0 0 15px rgba(255, 30, 65, 0.25);
+
+    overflow: hidden;
+}
+
+
+/* Webbing */
+
+.head::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 12px,
+            rgba(0, 0, 0, 0.25) 13px 14px
+        );
+
+    opacity: 0.75;
+}
+
+.head::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: -5px;
+
+    width: 2px;
+    height: 80px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   EYES
+   ========================================================= */
+
+.eye {
+    position: absolute;
+
+    top: 24px;
+
+    width: 21px;
+    height: 27px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #d9f7ff
+        );
+
+    border:
+        2px solid #03070a;
+
+    z-index: 5;
+
+    box-shadow:
+        0 0 6px rgba(220, 250, 255, 0.7);
+}
+
+.left-eye {
+    left: 10px;
+
+    clip-path:
+        polygon(
+            0 20%,
+            100% 0,
+            78% 100%,
+            10% 78%
+        );
+}
+
+.right-eye {
+    right: 10px;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 20%,
+            90% 78%,
+            22% 100%
+        );
+}
+
+
+/* =========================================================
+   CHARACTER BODY
+   ========================================================= */
+
+.body {
+    position: absolute;
+
+    top: 62px;
+    left: 50%;
+
+    width: 50px;
+    height: 63px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        16px 16px 10px 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #72091c,
+            #e31b3e 48%,
+            #73091c
+        );
+
+    border:
+        2px solid #ff405d;
+
+    box-shadow:
+        inset 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   SPIDER EMBLEM
+   ========================================================= */
+
+.spider-emblem {
+    position: absolute;
+
+    top: 15px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 20px;
+
+    filter:
+        grayscale(1)
+        brightness(0);
+
+    text-shadow:
+        0 0 8px white;
+}
+
+
+/* =========================================================
+   ARMS
+   ========================================================= */
+
+.arm {
+    position: absolute;
+
+    top: 68px;
+
+    width: 15px;
+    height: 58px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #cf1534,
+            #68091b
+        );
+
+    border:
+        2px solid #ff405d;
+
+    transform-origin:
+        top center;
+}
+
+.left-arm {
+    left: 4px;
+
+    transform:
+        rotate(15deg);
+}
+
+.right-arm {
+    right: 4px;
+
+    transform:
+        rotate(-15deg);
+}
+
+
+/* =========================================================
+   LEGS
+   ========================================================= */
+
+.leg {
+    position: absolute;
+
+    top: 116px;
+
+    width: 17px;
+    height: 38px;
+
+    border-radius:
+        0 0 9px 9px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #76091c,
+            #35030c
+        );
+
+    border:
+        2px solid #ff405d;
+
+    transform-origin:
+        top center;
+}
+
+.left-leg {
+    left: 18px;
+
+    transform:
+        rotate(8deg);
+}
+
+.right-leg {
+    right: 18px;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+/* =========================================================
+   FLOOR HUD
+   ========================================================= */
+
+.floor {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 35px;
+}
+
+.floor-line {
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+    top: 50%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #3ad8ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(45, 210, 255, 0.65);
+}
+
+.floor::before,
+.floor::after {
+    content: "";
+
+    position: absolute;
+
+    top: calc(50% - 8px);
+
+    width: 55px;
+    height: 16px;
+
+    border-top:
+        1px solid rgba(65, 215, 255, 0.4);
+
+    border-bottom:
+        1px solid rgba(65, 215, 255, 0.15);
+}
+
+.floor::before {
+    left: 10%;
+}
+
+.floor::after {
+    right: 10%;
+}
+
+
+/* =========================================================
+   CONTROL PANEL
+   ========================================================= */
+
+.control-panel {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 50px;
+
+    padding:
+        10px 16px 8px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(6, 25, 42, 0.78),
+            rgba(3, 13, 25, 0.94)
+        );
+
+    border-top:
+        1px solid rgba(52, 214, 255, 0.35);
+
+    box-shadow:
+        0 -10px 35px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter:
+        blur(14px);
+
+    z-index: 40;
+}
+
+
+/* =========================================================
+   INSTRUCTION
+   ========================================================= */
+
+.instruction {
+    margin-bottom: 8px;
+
+    text-align: center;
+
+    color: #72cce8;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MICROPHONE
+   ========================================================= */
+
+.mic-button {
+    display: block;
+
+    width: 54px;
+    height: 54px;
+
+    margin:
+        0 auto 10px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(75, 220, 255, 0.8);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(25, 100, 140, 0.55),
+            rgba(4, 25, 43, 0.95)
+        );
+
+    color: #eaffff;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(30, 200, 255, 0.25),
+        inset 0 0 15px rgba(50, 200, 255, 0.1);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.mic-button:hover {
+    box-shadow:
+        0 0 22px rgba(30, 200, 255, 0.55);
+}
+
+.mic-button:active {
+    transform:
+        scale(0.9);
+}
+
+.mic-button.listening {
+    animation:
+        listeningPulse 1s infinite;
+}
+
+
+/* =========================================================
+   COMMAND INPUT
+   ========================================================= */
+
+.command-input {
+    display: flex;
+
+    width: 100%;
+
+    gap: 8px;
+}
+
+#text-input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 44px;
+
+    padding:
+        0 14px;
+
+    border:
+        1px solid rgba(67, 211, 255, 0.3);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background:
+        rgba(6, 32, 53, 0.75);
+
+    color: #e8fbff;
+
+    font-size: 14px;
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 160, 255, 0.04);
+}
+
+#text-input::placeholder {
+    color: #6190a3;
+}
+
+#text-input:focus {
+    border-color:
+        rgba(70, 220, 255, 0.8);
+
+    box-shadow:
+        0 0 15px rgba(40, 200, 255, 0.12),
+        inset 0 0 12px rgba(0, 180, 255, 0.05);
+}
+
+
+/* =========================================================
+   SEND BUTTON
+   ========================================================= */
+
+#send-button {
+    width: 46px;
+    height: 44px;
+
+    border:
+        1px solid rgba(255, 55, 85, 0.7);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e52346,
+            #9c0e29
+        );
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 12px rgba(255, 30, 60, 0.18);
+}
+
+#send-button:hover {
+    box-shadow:
+        0 0 20px rgba(255, 30, 60, 0.45);
+}
+
+#send-button:active {
+    transform:
+        scale(0.92);
+}
+
+
+/* =========================================================
+   INFORMATION PANEL
+   ========================================================= */
+
+.info-panel {
+    position: absolute;
+
+    left: 16px;
+    right: 16px;
+    bottom: 8px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    z-index: 60;
+}
+
+.info-item {
+    display: flex;
+
+    gap: 6px;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.info-label {
+    color: #47788c;
+}
+
+.info-value {
+    color: #9bd9e9;
+
+    text-shadow:
+        0 0 5px rgba(60, 220, 255, 0.3);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    display: none;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes idleBounce {
+
+    0%,
+    100% {
+        margin-bottom: 0;
+    }
+
+    50% {
+        margin-bottom: 5px;
+    }
+}
+
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+
+@keyframes listeningPulse {
+
+    0% {
+        box-shadow:
+            0 0 5px rgba(40, 210, 255, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px rgba(40, 210, 255, 0.8),
+            0 0 55px rgba(255, 35, 65, 0.25);
+    }
+
+    100% {
+        box-shadow:
+            0 0 5px rgba(40, 210, 255, 0.2);
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-height: 650px) {
+
+    .character {
+        transform:
+            translateX(-50%)
+            scale(0.82);
+
+        transform-origin:
+            bottom center;
+    }
+
+    .speech-bubble {
+        top: 7%;
+    }
+
+    .mic-button {
+        width: 46px;
+        height: 46px;
+
+        margin-bottom: 6px;
+    }
+
+    #text-input,
+    #send-button {
+        height: 40px;
+    }
+}
+
+
+/* =========================================================
+   TABLET / DESKTOP
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+    #app {
+        max-width: 540px;
+
+        margin: 0 auto;
+
+        border-left:
+            1px solid rgba(70, 210, 255, 0.12);
+
+        border-right:
+            1px solid rgba(70, 210, 255, 0.12);
+
+        box-shadow:
+            0 0 80px rgba(0, 120, 200, 0.15);
+    }
+                       }
