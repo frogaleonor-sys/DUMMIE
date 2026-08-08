@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#172033"
+    >
+
+    <title>ABM 2 Hub</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div>
+
+            <div class="school-name">
+                ABM 2
+            </div>
+
+            <div class="hub-name">
+                STUDY HUB
+            </div>
+
+        </div>
+
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            ONLINE
+
+        </div>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main>
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome">
+
+            <p class="small-label">
+                WELCOME BACK
+            </p>
+
+            <h1>
+                ABM 2 HUB
+            </h1>
+
+            <p>
+                Everything important for our section,
+                in one place.
+            </p>
+
+        </section>
+
+
+
+        <!-- QUICK ACCESS -->
+
+        <section class="quick-grid">
+
+
+            <button
+                class="quick-card"
+                data-page="schedule"
+                type="button"
+            >
+
+                <span class="icon">
+                    📅
+                </span>
+
+                <span>
+                    SCHEDULE
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-page="activities"
+                type="button"
+            >
+
+                <span class="icon">
+                    📚
+                </span>
+
+                <span>
+                    ACTIVITIES
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-page="deadlines"
+                type="button"
+            >
+
+                <span class="icon">
+                    ⏰
+                </span>
+
+                <span>
+                    DEADLINES
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-page="announcements"
+                type="button"
+            >
+
+                <span class="icon">
+                    📢
+                </span>
+
+                <span>
+                    ANNOUNCEMENTS
+                </span>
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- NEXT DEADLINE -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <span>
+                    NEXT DEADLINE
+                </span>
+
+                <span class="badge">
+                    UPCOMING
+                </span>
+
+            </div>
+
+
+            <div class="deadline">
+
+                <div>
+
+                    <h2 id="deadline-name">
+                        No deadline added
+                    </h2>
+
+                    <p id="deadline-subject">
+                        —
+                    </p>
+
+                </div>
+
+
+                <div class="date">
+
+                    <strong id="deadline-date">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ANNOUNCEMENT -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <span>
+                    LATEST ANNOUNCEMENT
+                </span>
+
+            </div>
+
+
+            <div class="announcement">
+
+                <div class="announcement-icon">
+                    📢
+                </div>
+
+                <div>
+
+                    <h2 id="announcement-title">
+                        No announcements
+                    </h2>
+
+                    <p id="announcement-text">
+                        Check back later for updates.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TODAY'S CLASSES -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <span>
+                    TODAY'S CLASSES
+                </span>
+
+            </div>
+
+
+            <div
+                id="today-classes"
+                class="class-list"
+            >
+
+                <div class="empty">
+                    No classes added yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- SECRET EASTER EGG -->
+
+        <section class="sync-area">
+
+            <button
+                id="secretTrigger"
+                type="button"
+            >
+                Last synced: 11:11
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- SECRET OVERLAY -->
+
+    <div
+        id="secretOverlay"
+        class="secret-overlay"
+    >
+
+        <div class="secret-box">
+
+            <div class="secret-loading">
+                ACCESSING...
+            </div>
+
+            <div
+                id="secretProgress"
+                class="secret-progress"
+            >
+                ████████████████
+            </div>
+
+            <h2>
+                IDENTITY VERIFIED
+            </h2>
+
+            <p>
+                Welcome.
+            </p>
+
+            <button
+                id="secretEnter"
+                type="button"
+            >
+                ENTER
+            </button>
+
+            <button
+                id="secretClose"
+                type="button"
+            >
+                CLOSE
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <nav class="navigation">
+
+
+        <button
+            class="nav-button active"
+            data-page="home"
+            type="button"
+        >
+
+            🏠
+
+            <span>
+                HOME
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-page="schedule"
+            type="button"
+        >
+
+            📅
+
+            <span>
+                SCHEDULE
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-page="activities"
+            type="button"
+        >
+
+            📚
+
+            <span>
+                ACTIVITIES
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-page="more"
+            type="button"
+        >
+
+            ☰
+
+            <span>
+                MORE
+            </span>
+
+        </button>
+
+
+    </nav>
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+  </html>
