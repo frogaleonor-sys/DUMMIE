@@ -2,31 +2,168 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dummie Test</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ECHO-01</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 <body>
 
-    <h1>DUMMIE ONLINE</h1>
+    <div id="app">
 
-    <input id="message" type="text" placeholder="Type something">
+        <header>
 
-    <button id="send">SEND</button>
+            <div>
+                <span class="signal-dot"></span>
+                ECHO-01
+            </div>
 
-    <p id="response">Waiting...</p>
+            <div id="connection">
+                SIGNAL ONLINE
+            </div>
 
-    <script>
-        document.getElementById("send").onclick = function () {
+        </header>
 
-            const message =
-                document.getElementById("message").value;
 
-            document.getElementById("response").textContent =
-                "Dummie heard: " + message;
+        <main>
 
-        };
-    </script>
+            <section class="map-section">
+
+                <div class="map-title">
+                    PLANETARY SURVEILLANCE
+                </div>
+
+                <div id="map">
+
+                    <div
+                        class="location city"
+                        data-name="Veyra City"
+                    >
+                        ●
+                        <span>VEYRA</span>
+                    </div>
+
+                    <div
+                        class="location ruins"
+                        data-name="Unknown Ruins"
+                    >
+                        ●
+                        <span>RUINS</span>
+                    </div>
+
+                    <div
+                        class="location signal"
+                        data-name="Unknown Signal"
+                    >
+                        ●
+                        <span>SIGNAL</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="information">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        SATELLITE STATUS
+                    </div>
+
+                    <p>
+                        SYSTEM
+                        <strong>ONLINE</strong>
+                    </p>
+
+                    <p>
+                        ORBIT
+                        <strong>STABLE</strong>
+                    </p>
+
+                    <p>
+                        SIGNAL
+                        <strong id="signal">
+                            72%
+                        </strong>
+                    </p>
+
+                    <p>
+                        ENERGY
+                        <strong>
+                            91%
+                        </strong>
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="event"
+                    class="panel event"
+                >
+
+                    <div class="panel-title">
+                        SYSTEM MESSAGE
+                    </div>
+
+                    <p>
+                        No anomalies detected.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <nav>
+
+            <button
+                class="active"
+                data-page="world"
+            >
+                🌍
+                <span>WORLD</span>
+            </button>
+
+            <button
+                data-page="signals"
+            >
+                📡
+                <span>SIGNALS</span>
+            </button>
+
+            <button
+                data-page="entity"
+            >
+                🤖
+                <span>ENTITY</span>
+            </button>
+
+            <button
+                data-page="archive"
+            >
+                📁
+                <span>ARCHIVE</span>
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
-</html>
+                        </html>
