@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,186 +12,343 @@
 
     <meta
         name="theme-color"
-        content="#080b12"
+        content="#111827"
     >
 
-    <title>UNKNOWN ENTITY</title>
+    <title>ABM 2 HUB</title>
 
     <link
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
 
 
 <body>
 
-    <div class="app">
+<div class="app">
 
-        <!-- TOP BAR -->
 
-        <header class="top-bar">
+    <!-- HEADER -->
 
-            <div class="system-name">
-                UNKNOWN ENTITY
+    <header class="header">
+
+        <div>
+
+            <div class="school-name">
+                ABM 2
             </div>
 
-            <div class="status">
-                <span class="status-dot"></span>
-                ONLINE
+            <div class="hub-name">
+                STUDY HUB
             </div>
 
-        </header>
+        </div>
 
 
-        <!-- MAIN AREA -->
+        <div class="status">
 
-        <main class="main">
+            <span class="status-dot"></span>
 
-            <!-- ENTITY DISPLAY -->
+            ONLINE
 
-            <section class="entity-section">
+        </div>
 
-                <div class="entity-container">
+    </header>
 
-                    <div
-                        id="entity"
-                        class="entity"
-                    >
-                        ◉_◉
-                    </div>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome">
+
+            <p class="small-label">
+                WELCOME BACK
+            </p>
+
+            <h1>
+                ABM 2 HUB
+            </h1>
+
+            <p>
+                Everything important for our section,
+                in one place.
+            </p>
+
+        </section>
+
+
+
+        <!-- QUICK INFO -->
+
+        <section class="quick-grid">
+
+
+            <button
+                class="quick-card"
+                data-page="schedule"
+                type="button"
+            >
+
+                <span class="icon">
+                    📅
+                </span>
+
+                <span>
+                    SCHEDULE
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-page="activities"
+                type="button"
+            >
+
+                <span class="icon">
+                    📚
+                </span>
+
+                <span>
+                    ACTIVITIES
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-page="deadlines"
+                type="button"
+            >
+
+                <span class="icon">
+                    ⏰
+                </span>
+
+                <span>
+                    DEADLINES
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-card"
+                data-page="announcements"
+                type="button"
+            >
+
+                <span class="icon">
+                    📢
+                </span>
+
+                <span>
+                    ANNOUNCEMENTS
+                </span>
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- NEXT DEADLINE -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <span>
+                    NEXT DEADLINE
+                </span>
+
+                <span class="badge">
+                    UPCOMING
+                </span>
+
+            </div>
+
+
+            <div class="deadline">
+
+                <div>
+
+                    <h2 id="deadline-name">
+                        No deadline added
+                    </h2>
+
+                    <p id="deadline-subject">
+                        —
+                    </p>
 
                 </div>
 
 
-                <div class="entity-name">
-                    ENTITY_001
-                </div>
+                <div class="date">
 
-                <div
-                    id="mood"
-                    class="mood"
-                >
-                    MOOD: CONFUSED
-                </div>
-
-            </section>
-
-
-            <!-- CONVERSATION -->
-
-            <section class="conversation">
-
-                <div
-                    id="messages"
-                    class="messages"
-                >
-
-                    <div class="message entity-message">
-
-                        <span class="message-label">
-                            ENTITY
-                        </span>
-
-                        <p>
-                            Where... am I?
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- INPUT -->
-
-                <div class="input-area">
-
-                    <input
-                        id="userInput"
-                        type="text"
-                        placeholder="Talk to the entity..."
-                        autocomplete="off"
-                    >
-
-                    <button
-                        id="sendButton"
-                        type="button"
-                    >
-                        SEND
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- STATS -->
-
-            <section class="stats">
-
-                <div class="stat">
-
-                    <span>
-                        MEMORY
-                    </span>
-
-                    <strong id="memory">
-                        0%
+                    <strong id="deadline-date">
+                        —
                     </strong>
 
                 </div>
 
+            </div>
 
-                <div class="stat">
+        </section>
 
-                    <span>
-                        TRUST
-                    </span>
 
-                    <strong id="trust">
-                        0%
-                    </strong>
+
+        <!-- ANNOUNCEMENTS -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <span>
+                    LATEST ANNOUNCEMENT
+                </span>
+
+            </div>
+
+
+            <div class="announcement">
+
+                <div class="announcement-icon">
+                    📢
+                </div>
+
+                <div>
+
+                    <h2 id="announcement-title">
+                        No announcements
+                    </h2>
+
+                    <p id="announcement-text">
+                        Check back later for updates.
+                    </p>
 
                 </div>
 
+            </div>
 
-                <div class="stat">
+        </section>
 
-                    <span>
-                        UNDERSTANDING
-                    </span>
 
-                    <strong id="understanding">
-                        1%
-                    </strong>
+
+        <!-- TODAY -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <span>
+                    TODAY'S CLASSES
+                </span>
+
+            </div>
+
+
+            <div
+                id="today-classes"
+                class="class-list"
+            >
+
+                <div class="empty">
+
+                    No classes added yet.
 
                 </div>
 
-            </section>
+            </div>
 
-        </main>
+        </section>
 
 
-        <!-- BOTTOM BAR -->
+    </main>
 
-        <footer class="bottom-bar">
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navigation">
+
+        <button
+            class="nav-button active"
+            data-page="home"
+            type="button"
+        >
+
+            🏠
 
             <span>
-                ENTITY STATUS
+                HOME
             </span>
 
-            <span id="growth">
-                DEVELOPMENT: 0
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-page="schedule"
+            type="button"
+        >
+
+            📅
+
+            <span>
+                SCHEDULE
             </span>
 
-        </footer>
-
-    </div>
+        </button>
 
 
-    <!-- JAVASCRIPT -->
+        <button
+            class="nav-button"
+            data-page="activities"
+            type="button"
+        >
 
-    <script src="script.js"></script>
+            📚
+
+            <span>
+                ACTIVITIES
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-page="more"
+            type="button"
+        >
+
+            ☰
+
+            <span>
+                MORE
+            </span>
+
+        </button>
+
+    </nav>
+
+
+</div>
+
+
+
+<script src="script.js"></script>
 
 </body>
 
