@@ -1,13 +1,14 @@
 ```javascript
 /* =========================================================
-   DUMMIE // AI HUD
+   DUMMIE AI HUD
    SCRIPT v0.2
    ========================================================= */
 
 
 /* =========================================================
-   ELEMENTS
+   GET ELEMENTS
    ========================================================= */
+
 
 const speechBubble =
     document.getElementById("speech-bubble");
@@ -36,51 +37,32 @@ const aiStatus =
 const coreState =
     document.getElementById("core-state");
 
+const coreArea =
+    document.getElementById("core-area");
+
+const statusDot =
+    document.getElementById("status-dot");
+
 const hudTime =
     document.getElementById("hud-time");
 
 const hudDate =
     document.getElementById("hud-date");
 
-const statusDot =
-    document.getElementById("status-dot");
-
-const coreArea =
-    document.querySelector(".core-area");
-
 
 /* =========================================================
-   DUMMIE CONFIGURATION
+   DUMMIE
    ========================================================= */
+
 
 const DUMMIE = {
 
     name: "DUMMIE",
 
-    version: "0.2",
-
-    creator: "Creator",
-
-    personality: {
-
-        friendly: true,
-
-        curious: true,
-
-        sarcastic: true,
-
-        helpful: true,
-
-        calm: true
-
-    }
+    version: "0.2"
 
 };
 
-
-/* =========================================================
-   SYSTEM STATE
-   ========================================================= */
 
 let isSpeaking = false;
 
@@ -88,30 +70,37 @@ let isListening = false;
 
 
 /* =========================================================
-   SYSTEM STATUS
+   STATUS
    ========================================================= */
+
 
 function setStatus(status) {
 
-    systemStatus.textContent =
+    const value =
         status.toUpperCase();
+
+    systemStatus.textContent =
+        value;
 
     aiStatus.textContent =
-        status.toUpperCase();
+        value;
 
     coreState.textContent =
-        status.toUpperCase();
+        value;
 
 }
 
 
 /* =========================================================
-   TIME
+   CLOCK
    ========================================================= */
+
 
 function updateClock() {
 
-    const now = new Date();
+    const now =
+        new Date();
+
 
     hudTime.textContent =
         now.toLocaleTimeString(
@@ -121,6 +110,7 @@ function updateClock() {
                 minute: "2-digit"
             }
         );
+
 
     hudDate.textContent =
         now.toLocaleDateString(
@@ -134,8 +124,6 @@ function updateClock() {
 }
 
 
-/* Update every second */
-
 updateClock();
 
 setInterval(
@@ -145,33 +133,37 @@ setInterval(
 
 
 /* =========================================================
-   VOICE SELECTION
+   VOICE
    ========================================================= */
+
 
 let selectedVoice = null;
 
 
-function loadVoice() {
+function loadVoices() {
 
     if (
         !("speechSynthesis" in window)
     ) {
+
         return;
+
     }
+
 
     const voices =
-        window.speechSynthesis.getVoices();
+        window.speechSynthesis
+            .getVoices();
+
 
     if (!voices.length) {
+
         return;
+
     }
 
 
-    /*
-       Try to find a natural English voice.
-    */
-
-    const preferredNames = [
+    const preferred = [
 
         "Google US English",
 
@@ -181,33 +173,31 @@ function loadVoice() {
 
         "Samantha",
 
-        "Karen",
-
-        "Ava",
-
-        "Google UK English Female"
+        "Ava"
 
     ];
 
 
     for (
-        const preferred
-        of preferredNames
+        const name
+        of preferred
     ) {
 
-        const found =
+        const voice =
             voices.find(
-                voice =>
-                    voice.name
+                item =>
+                    item.name
                         .toLowerCase()
                         .includes(
-                            preferred.toLowerCase()
+                            name.toLowerCase()
                         )
             );
 
-        if (found) {
 
-            selectedVoice = found;
+        if (voice) {
+
+            selectedVoice =
+                voice;
 
             return;
 
@@ -216,14 +206,9 @@ function loadVoice() {
     }
 
 
-    /*
-       Fallback to any English voice.
-    */
-
     selectedVoice =
         voices.find(
             voice =>
-                voice.lang &&
                 voice.lang
                     .toLowerCase()
                     .startsWith("en")
@@ -236,18 +221,19 @@ if (
     "speechSynthesis" in window
 ) {
 
-    loadVoice();
+    loadVoices();
 
     window.speechSynthesis
         .onvoiceschanged =
-        loadVoice;
+        loadVoices;
 
 }
 
 
 /* =========================================================
-   SPEECH
+   SPEAK
    ========================================================= */
+
 
 function speak(text) {
 
@@ -255,19 +241,17 @@ function speak(text) {
         !("speechSynthesis" in window)
     ) {
 
+        setStatus("READY");
+
         return;
 
     }
 
 
-    /*
-       Stop previous speech.
-    */
-
     window.speechSynthesis.cancel();
 
 
-    const utterance =
+    const voice =
         new SpeechSynthesisUtterance(
             text
         );
@@ -275,30 +259,35 @@ function speak(text) {
 
     if (selectedVoice) {
 
-        utterance.voice =
+        voice.voice =
             selectedVoice;
 
     }
 
 
-    /*
-       Slightly more natural
-       than the default browser voice.
-    */
+    voice.rate =
+        0.94;
 
-    utterance.rate = 0.96;
+    voice.pitch =
+        1.02;
 
-    utterance.pitch = 1.03;
-
-    utterance.volume = 1;
+    voice.volume =
+        1;
 
 
-    utterance.onstart =
+    voice.onstart =
         function () {
 
-            isSpeaking = true;
+            isSpeaking =
+                true;
 
-            setStatus("SPEAKING");
+            setStatus(
+                "SPEAKING"
+            );
+
+            coreArea.classList.add(
+                "speaking"
+            );
 
             statusDot.style.background =
                 "#ff3d61";
@@ -306,25 +295,41 @@ function speak(text) {
             statusDot.style.boxShadow =
                 "0 0 9px #ff3d61";
 
-            coreArea.classList.add(
-                "speaking"
-            );
-
         };
 
 
-    utterance.onend =
+    voice.onend =
         function () {
 
-            isSpeaking = false;
+            isSpeaking =
+                false;
 
-            setStatus("READY");
+            setStatus(
+                "READY"
+            );
+
+            coreArea.classList.remove(
+                "speaking"
+            );
 
             statusDot.style.background =
                 "#43ffad";
 
             statusDot.style.boxShadow =
-                "0 0 7px #43ffad";
+                "0 0 8px #43ffad";
+
+        };
+
+
+    voice.onerror =
+        function () {
+
+            isSpeaking =
+                false;
+
+            setStatus(
+                "READY"
+            );
 
             coreArea.classList.remove(
                 "speaking"
@@ -333,60 +338,39 @@ function speak(text) {
         };
 
 
-    window.speechSynthesis.speak(
-        utterance
-    );
+    window.speechSynthesis
+        .speak(voice);
 
 }
 
 
 /* =========================================================
-   DUMMIE RESPONSE
+   TALK
    ========================================================= */
 
-function talk(text) {
+
+function talk(message) {
 
     speechName.textContent =
         DUMMIE.name;
 
     speechText.textContent =
-        text;
+        message;
 
-    speechBubble.style.opacity =
-        "1";
+    speechBubble.style.display =
+        "block";
 
-    setStatus("SPEAKING");
-
-    speak(text);
+    speak(message);
 
 }
 
 
 /* =========================================================
-   RANDOM RESPONSE
+   COMMAND BRAIN
    ========================================================= */
 
-function randomResponse(
-    responses
-) {
 
-    return responses[
-        Math.floor(
-            Math.random() *
-            responses.length
-        )
-    ];
-
-}
-
-
-/* =========================================================
-   COMMAND PROCESSOR
-   ========================================================= */
-
-function processCommand(
-    command
-) {
+function processCommand(command) {
 
     const input =
         command
@@ -401,12 +385,13 @@ function processCommand(
     }
 
 
-    setStatus("PROCESSING");
+    setStatus(
+        "PROCESSING"
+    );
 
 
-    /* =====================================================
-       HELLO
-       ===================================================== */
+    /* HELLO */
+
 
     if (
         input === "hi" ||
@@ -416,17 +401,7 @@ function processCommand(
     ) {
 
         talk(
-            randomResponse([
-
-                "Hello, Creator.",
-
-                "Hey. I'm listening.",
-
-                "Hello. All systems are ready.",
-
-                "Hey, Creator. What are we working on?"
-
-            ])
+            "Hello, Creator. I'm listening."
         );
 
         return;
@@ -434,9 +409,8 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       WHO ARE YOU
-       ===================================================== */
+    /* WHO ARE YOU */
+
 
     if (
         input.includes("who are you") ||
@@ -452,18 +426,17 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       CREATOR
-       ===================================================== */
+    /* CREATOR */
+
 
     if (
-        input.includes("who is your creator") ||
         input.includes("who made you") ||
-        input.includes("who created you")
+        input.includes("who created you") ||
+        input.includes("who is your creator")
     ) {
 
         talk(
-            "You did. At least, according to my current database."
+            "You did. At least, that's what my current database says."
         );
 
         return;
@@ -471,9 +444,8 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       HOW ARE YOU
-       ===================================================== */
+    /* HOW ARE YOU */
+
 
     if (
         input.includes("how are you") ||
@@ -481,17 +453,7 @@ function processCommand(
     ) {
 
         talk(
-            randomResponse([
-
-                "All systems are operational.",
-
-                "I'm functioning within acceptable parameters.",
-
-                "Pretty good. You haven't broken me yet.",
-
-                "Systems stable. Personality questionable."
-
-            ])
+            "All systems are operational. You haven't broken me yet."
         );
 
         return;
@@ -499,9 +461,8 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       TIME
-       ===================================================== */
+    /* TIME */
+
 
     if (
         input === "time" ||
@@ -512,6 +473,7 @@ function processCommand(
         const now =
             new Date();
 
+
         const time =
             now.toLocaleTimeString(
                 [],
@@ -520,6 +482,7 @@ function processCommand(
                     minute: "2-digit"
                 }
             );
+
 
         talk(
             "It's currently " +
@@ -532,9 +495,8 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       DATE
-       ===================================================== */
+    /* DATE */
+
 
     if (
         input.includes("what date") ||
@@ -544,6 +506,7 @@ function processCommand(
 
         const now =
             new Date();
+
 
         const date =
             now.toLocaleDateString(
@@ -556,6 +519,7 @@ function processCommand(
                 }
             );
 
+
         talk(
             "Today is " +
             date +
@@ -567,16 +531,15 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       VOLUME
-       ===================================================== */
+    /* VOLUME */
+
 
     if (
         input.includes("volume")
     ) {
 
         talk(
-            "I detected a volume command. Device control isn't connected yet, but the command system is ready for it."
+            "Volume command detected. Phone-level controls aren't connected yet."
         );
 
         return;
@@ -584,9 +547,8 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       EARPHONES / BLUETOOTH
-       ===================================================== */
+    /* EARPHONES */
+
 
     if (
         input.includes("earphone") ||
@@ -595,7 +557,7 @@ function processCommand(
     ) {
 
         talk(
-            "Bluetooth control module detected. Device connection is currently in prototype mode."
+            "Bluetooth command detected. Device connection isn't connected yet."
         );
 
         return;
@@ -603,9 +565,8 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       LIGHT
-       ===================================================== */
+    /* LIGHT */
+
 
     if (
         input.includes("light") ||
@@ -613,7 +574,7 @@ function processCommand(
     ) {
 
         talk(
-            "Lighting control detected. Give me a connected device and we'll have something to control."
+            "Lighting command detected. Give me a connected device and we'll have something to control."
         );
 
         return;
@@ -621,14 +582,13 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       SYSTEM STATUS
-       ===================================================== */
+    /* SYSTEM STATUS */
+
 
     if (
         input.includes("system status") ||
         input.includes("status report") ||
-        input.includes("systems")
+        input === "systems"
     ) {
 
         talk(
@@ -640,9 +600,8 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       THANK YOU
-       ===================================================== */
+    /* THANK YOU */
+
 
     if (
         input.includes("thank you") ||
@@ -650,17 +609,7 @@ function processCommand(
     ) {
 
         talk(
-            randomResponse([
-
-                "You're welcome.",
-
-                "Anytime, Creator.",
-
-                "That's what I'm here for.",
-
-                "No problem."
-
-            ])
+            "You're welcome, Creator."
         );
 
         return;
@@ -668,14 +617,13 @@ function processCommand(
     }
 
 
-    /* =====================================================
-       UNKNOWN COMMAND
-       ===================================================== */
+    /* UNKNOWN */
+
 
     talk(
         "I heard you say: " +
         command +
-        ". I don't know how to handle that yet. My command database is still growing."
+        ". I don't know how to handle that yet, but you can teach me."
     );
 
 }
@@ -684,6 +632,7 @@ function processCommand(
 /* =========================================================
    SEND MESSAGE
    ========================================================= */
+
 
 function sendMessage() {
 
@@ -698,12 +647,13 @@ function sendMessage() {
     }
 
 
+    textInput.value =
+        "";
+
+
     processCommand(
         message
     );
-
-
-    textInput.value = "";
 
 }
 
@@ -711,6 +661,7 @@ function sendMessage() {
 /* =========================================================
    SEND BUTTON
    ========================================================= */
+
 
 sendButton.addEventListener(
     "click",
@@ -722,9 +673,10 @@ sendButton.addEventListener(
    ENTER KEY
    ========================================================= */
 
+
 textInput.addEventListener(
     "keydown",
-    function (event) {
+    function(event) {
 
         if (
             event.key === "Enter"
@@ -744,12 +696,14 @@ textInput.addEventListener(
    VOICE RECOGNITION
    ========================================================= */
 
+
 const SpeechRecognition =
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
 
 
-let recognition = null;
+let recognition =
+    null;
 
 
 if (SpeechRecognition) {
@@ -768,16 +722,15 @@ if (SpeechRecognition) {
         "en-US";
 
 
-    /* ---------------------------------------------
-       LISTENING START
-       --------------------------------------------- */
-
     recognition.onstart =
-        function () {
+        function() {
 
-            isListening = true;
+            isListening =
+                true;
 
-            setStatus("LISTENING");
+            setStatus(
+                "LISTENING"
+            );
 
             micButton.classList.add(
                 "listening"
@@ -790,19 +743,18 @@ if (SpeechRecognition) {
         };
 
 
-    /* ---------------------------------------------
-       RESULT
-       --------------------------------------------- */
-
     recognition.onresult =
-        function (event) {
+        function(event) {
 
             const transcript =
-                event.results[0][0]
+                event
+                    .results[0][0]
                     .transcript;
+
 
             textInput.value =
                 transcript;
+
 
             processCommand(
                 transcript
@@ -811,14 +763,11 @@ if (SpeechRecognition) {
         };
 
 
-    /* ---------------------------------------------
-       ERROR
-       --------------------------------------------- */
-
     recognition.onerror =
-        function () {
+        function() {
 
-            isListening = false;
+            isListening =
+                false;
 
             micButton.classList.remove(
                 "listening"
@@ -828,23 +777,18 @@ if (SpeechRecognition) {
                 "listening"
             );
 
-            setStatus("READY");
-
-            talk(
-                "I couldn't hear that. Try again."
+            setStatus(
+                "READY"
             );
 
         };
 
 
-    /* ---------------------------------------------
-       END
-       --------------------------------------------- */
-
     recognition.onend =
-        function () {
+        function() {
 
-            isListening = false;
+            isListening =
+                false;
 
             micButton.classList.remove(
                 "listening"
@@ -854,22 +798,21 @@ if (SpeechRecognition) {
                 "listening"
             );
 
+
             if (!isSpeaking) {
 
-                setStatus("READY");
+                setStatus(
+                    "READY"
+                );
 
             }
 
         };
 
 
-    /* ---------------------------------------------
-       MICROPHONE BUTTON
-       --------------------------------------------- */
-
     micButton.addEventListener(
         "click",
-        function () {
+        function() {
 
             if (isListening) {
 
@@ -884,10 +827,10 @@ if (SpeechRecognition) {
 
                 recognition.start();
 
-            } catch (error) {
+            } catch(error) {
 
                 console.log(
-                    "Recognition already active."
+                    "Microphone already active."
                 );
 
             }
@@ -898,17 +841,12 @@ if (SpeechRecognition) {
 
 } else {
 
-    /*
-       Browser doesn't support
-       speech recognition.
-    */
-
     micButton.addEventListener(
         "click",
-        function () {
+        function() {
 
             talk(
-                "Voice input isn't supported by this browser. Try Chrome or another browser with speech recognition."
+                "Voice input isn't supported by this browser. Try Chrome on your phone."
             );
 
         }
@@ -918,18 +856,21 @@ if (SpeechRecognition) {
 
 
 /* =========================================================
-   CORE INTERACTION
+   CORE BUTTON
    ========================================================= */
+
 
 coreArea.addEventListener(
     "click",
-    function () {
+    function() {
 
         if (isSpeaking) {
 
             window.speechSynthesis.cancel();
 
-            setStatus("READY");
+            setStatus(
+                "READY"
+            );
 
             return;
 
@@ -945,19 +886,23 @@ coreArea.addEventListener(
 
 
 /* =========================================================
-   INITIALIZATION
+   STARTUP
    ========================================================= */
 
-setStatus("READY");
+
+setStatus(
+    "READY"
+);
+
 
 setTimeout(
-    function () {
+    function() {
 
         talk(
             "Dummie systems online. Hello, Creator."
         );
 
     },
-    900
+    700
 );
 ```
