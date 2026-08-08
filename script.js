@@ -1,135 +1,86 @@
-const locations =
-    document.querySelectorAll(".location");
+document.addEventListener("DOMContentLoaded", function () {
 
-const eventBox =
-    document.getElementById("event");
+    const locations = document.querySelectorAll(".location");
+    const eventBox = document.getElementById("event");
+    const signal = document.getElementById("signal");
 
-const signal =
-    document.getElementById("signal");
+    /* MAP LOCATIONS */
 
+    locations.forEach(function (location) {
 
-locations.forEach(location => {
+        location.addEventListener("click", function () {
 
-    location.addEventListener(
-        "click",
-        () => {
+            const name = location.dataset.name;
 
-            const name =
-                location.dataset.name;
-
-            eventBox.innerHTML = `
-                <div class="panel-title">
-                    LOCATION DETECTED
-                </div>
-
-                <p>
-                    TARGET
-                    <strong>${name}</strong>
-                </p>
-
-                <p>
-                    STATUS
-                    <strong>SCANNING</strong>
-                </p>
-            `;
+            eventBox.innerHTML =
+                "<div class='panel-title'>LOCATION DETECTED</div>" +
+                "<p>TARGET <strong>" + name + "</strong></p>" +
+                "<p>STATUS <strong>SCANNING</strong></p>";
 
             signal.textContent =
-                Math.floor(
-                    Math.random() * 30 + 65
-                ) + "%";
+                Math.floor(Math.random() * 30 + 65) + "%";
 
-        }
+        });
 
-    );
-
-});
+    });
 
 
-document
-    .querySelectorAll("nav button")
-    .forEach(button => {
+    /* NAVIGATION */
 
-        button.addEventListener(
-            "click",
-            () => {
+    const buttons =
+        document.querySelectorAll("nav button");
 
-                document
-                    .querySelectorAll("nav button")
-                    .forEach(
-                        b =>
-                            b.classList.remove(
-                                "active"
-                            )
-                    );
+    buttons.forEach(function (button) {
 
-                button.classList.add(
-                    "active"
-                );
+        button.addEventListener("click", function () {
 
-                const page =
-                    button.dataset.page;
+            buttons.forEach(function (b) {
+                b.classList.remove("active");
+            });
 
-                if (page === "signals") {
+            button.classList.add("active");
 
-                    eventBox.innerHTML = `
-                        <div class="panel-title">
-                            SIGNAL NETWORK
-                        </div>
+            const page =
+                button.getAttribute("data-page");
 
-                        <p>
-                            UNKNOWN SIGNAL
-                            <strong>DETECTED</strong>
-                        </p>
-                    `;
 
-                }
+            if (page === "world") {
 
-                if (page === "entity") {
-
-                    eventBox.innerHTML = `
-                        <div class="panel-title">
-                            ENTITY DATABASE
-                        </div>
-
-                        <p>
-                            KNOWN ENTITIES
-                            <strong>0</strong>
-                        </p>
-                    `;
-
-                }
-
-                if (page === "archive") {
-
-                    eventBox.innerHTML = `
-                        <div class="panel-title">
-                            ARCHIVE
-                        </div>
-
-                        <p>
-                            DISCOVERIES
-                            <strong>0</strong>
-                        </p>
-                    `;
-
-                }
-
-                if (page === "world") {
-
-                    eventBox.innerHTML = `
-                        <div class="panel-title">
-                            SYSTEM MESSAGE
-                        </div>
-
-                        <p>
-                            No anomalies detected.
-                        </p>
-                    `;
-
-                }
+                eventBox.innerHTML =
+                    "<div class='panel-title'>SYSTEM MESSAGE</div>" +
+                    "<p>No anomalies detected.</p>";
 
             }
 
-        );
+
+            if (page === "signals") {
+
+                eventBox.innerHTML =
+                    "<div class='panel-title'>SIGNAL NETWORK</div>" +
+                    "<p>UNKNOWN SIGNAL <strong>DETECTED</strong></p>";
+
+            }
+
+
+            if (page === "entity") {
+
+                eventBox.innerHTML =
+                    "<div class='panel-title'>ENTITY DATABASE</div>" +
+                    "<p>KNOWN ENTITIES <strong>0</strong></p>";
+
+            }
+
+
+            if (page === "archive") {
+
+                eventBox.innerHTML =
+                    "<div class='panel-title'>ARCHIVE</div>" +
+                    "<p>DISCOVERIES <strong>0</strong></p>";
+
+            }
+
+        });
 
     });
+
+});
