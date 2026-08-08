@@ -1,74 +1,222 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const input = document.getElementById("userInput");
-    const sendButton = document.getElementById("sendButton");
-    const messages = document.getElementById("messages");
+    const quickCards =
+        document.querySelectorAll(".quick-card");
 
-    if (!input || !sendButton || !messages) {
-        alert("ERROR: ECHO elements not found.");
-        return;
-    }
-
-    function addMessage(text, type) {
-
-        const message = document.createElement("div");
-        message.className =
-            type === "user"
-                ? "message user-message"
-                : "message entity-message";
-
-        message.innerHTML = `
-            <span class="message-label">
-                ${type === "user" ? "YOU" : "ENTITY"}
-            </span>
-
-            <p>${text}</p>
-        `;
-
-        messages.appendChild(message);
-        messages.scrollTop = messages.scrollHeight;
-    }
+    const navButtons =
+        document.querySelectorAll(".nav-button");
 
 
-    function sendMessage() {
+    /* =========================
+       SAMPLE CLASS DATA
+       ========================= */
 
-        const text = input.value.trim();
+    const classes = [
+        {
+            time: "7:00 AM",
+            name: "Subject 1",
+            room: "Room —"
+        },
+        {
+            time: "8:30 AM",
+            name: "Subject 2",
+            room: "Room —"
+        },
+        {
+            time: "10:00 AM",
+            name: "Subject 3",
+            room: "Room —"
+        }
+    ];
 
-        if (!text) {
+
+    /* =========================
+       DISPLAY TODAY'S CLASSES
+       ========================= */
+
+    const classContainer =
+        document.getElementById("today-classes");
+
+
+    function showClasses() {
+
+        classContainer.innerHTML = "";
+
+
+        if (classes.length === 0) {
+
+            classContainer.innerHTML =
+                '<div class="empty">' +
+                'No classes added yet.' +
+                '</div>';
+
             return;
         }
 
-        addMessage(text, "user");
 
-        input.value = "";
-        input.focus();
+        classes.forEach(classItem => {
 
-        setTimeout(function () {
+            const item =
+                document.createElement("div");
 
-            addMessage(
-                "I heard you. I am still learning...",
-                "entity"
-            );
+            item.className =
+                "class-item";
 
-        }, 300);
+
+            item.innerHTML = `
+                <div class="class-time">
+                    ${classItem.time}
+                </div>
+
+                <div class="class-info">
+
+                    <div class="class-name">
+                        ${classItem.name}
+                    </div>
+
+                    <div class="class-room">
+                        ${classItem.room}
+                    </div>
+
+                </div>
+            `;
+
+
+            classContainer.appendChild(item);
+
+        });
+
     }
 
 
-    sendButton.addEventListener(
-        "click",
-        sendMessage
-    );
+    showClasses();
 
 
-    input.addEventListener(
-        "keydown",
-        function (event) {
+    /* =========================
+       PAGE ACTION
+       ========================= */
 
-            if (event.key === "Enter") {
-                sendMessage();
-            }
+    function openPage(page) {
+
+        if (page === "home") {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            return;
+        }
+
+
+        if (page === "schedule") {
+
+            alert(
+                "📅 Schedule\n\n" +
+                "Your class schedule will appear here."
+            );
+
+            return;
+        }
+
+
+        if (page === "activities") {
+
+            alert(
+                "📚 Activities\n\n" +
+                "Your activities will appear here."
+            );
+
+            return;
+        }
+
+
+        if (page === "deadlines") {
+
+            alert(
+                "⏰ Deadlines\n\n" +
+                "Your upcoming deadlines will appear here."
+            );
+
+            return;
+        }
+
+
+        if (page === "announcements") {
+
+            alert(
+                "📢 Announcements\n\n" +
+                "Class announcements will appear here."
+            );
+
+            return;
+        }
+
+
+        if (page === "more") {
+
+            alert(
+                "More features coming soon."
+            );
 
         }
-    );
+
+    }
+
+
+    /* =========================
+       QUICK CARDS
+       ========================= */
+
+    quickCards.forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                const page =
+                    card.dataset.page;
+
+                openPage(page);
+
+            }
+        );
+
+    });
+
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    navButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                navButtons.forEach(
+                    item => {
+                        item.classList.remove(
+                            "active"
+                        );
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                const page =
+                    button.dataset.page;
+
+                openPage(page);
+
+            }
+        );
+
+    });
 
 });
