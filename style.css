@@ -1,5 +1,7 @@
+```css
 /* =========================================================
-   DUMMIE // SPIDER HUD INTERFACE
+   DUMMIE // FUTURISTIC AI HUD
+   MOBILE + DESKTOP + PORTRAIT + LANDSCAPE
    ========================================================= */
 
 * {
@@ -13,48 +15,43 @@ html,
 body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-}
 
-body {
+    overflow: hidden;
+
+    background: #030b15;
+
     font-family:
         "Segoe UI",
         Arial,
-        Helvetica,
         sans-serif;
 
-    color: #eafaff;
+    color: #dffaff;
+}
 
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            #173a5c 0%,
-            #0b2037 28%,
-            #06111f 62%,
-            #020812 100%
-        );
+body {
+    min-height: 100dvh;
 }
 
 
 /* =========================================================
-   MAIN APP
+   APP
    ========================================================= */
 
 #app {
     position: relative;
 
     width: 100%;
-    height: 100vh;
     height: 100dvh;
 
     overflow: hidden;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(0, 190, 255, 0.035),
-            transparent 35%,
-            rgba(255, 25, 65, 0.035)
+        radial-gradient(
+            circle at 50% 45%,
+            #123652 0%,
+            #071a2b 32%,
+            #030b15 72%,
+            #01050b 100%
         );
 }
 
@@ -72,34 +69,28 @@ body {
 
     pointer-events: none;
 
-    opacity: 0.25;
-
     background-image:
         linear-gradient(
-            rgba(70, 210, 255, 0.08) 1px,
+            rgba(60, 200, 255, 0.055) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(70, 210, 255, 0.08) 1px,
+            rgba(60, 200, 255, 0.055) 1px,
             transparent 1px
         );
 
-    background-size: 35px 35px;
+    background-size:
+        30px 30px;
 
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
+    opacity: 0.5;
 
-    z-index: 1;
+    z-index: 0;
 }
 
 
 /* =========================================================
-   SPIDER WEB BACKGROUND
+   VIGNETTE
    ========================================================= */
 
 #app::after {
@@ -107,28 +98,18 @@ body {
 
     position: absolute;
 
-    width: 700px;
-    height: 700px;
-
-    left: 50%;
-    top: 43%;
-
-    transform: translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    opacity: 0.12;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            transparent 0 45px,
-            rgba(75, 205, 255, 0.55) 46px 47px
-        );
+    inset: 0;
 
     pointer-events: none;
 
-    z-index: 1;
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0, 0, 0, 0.5) 100%
+        );
+
+    z-index: 2;
 }
 
 
@@ -141,34 +122,33 @@ body {
 
     top: 0;
     left: 0;
+    right: 0;
 
-    width: 100%;
-    height: 64px;
+    height: 58px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 0 18px;
+    padding:
+        0 max(15px, env(safe-area-inset-left))
+        0 max(15px, env(safe-area-inset-right));
 
     background:
         linear-gradient(
             180deg,
-            rgba(7, 27, 47, 0.94),
-            rgba(6, 20, 36, 0.72)
+            rgba(5, 25, 43, 0.96),
+            rgba(4, 15, 27, 0.75)
         );
 
     border-bottom:
-        1px solid rgba(50, 207, 255, 0.35);
+        1px solid rgba(60, 215, 255, 0.3);
 
-    box-shadow:
-        0 5px 25px rgba(0, 0, 0, 0.3),
-        0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
 
-    backdrop-filter: blur(14px);
-
-    z-index: 50;
+    z-index: 20;
 }
 
 
@@ -181,157 +161,345 @@ body {
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
 
-    font-size: 17px;
+    font-size: 16px;
 
-    font-weight: 700;
+    font-weight: 800;
 
-    letter-spacing: 3px;
-
-    color: #e9faff;
+    letter-spacing: 4px;
 
     text-shadow:
-        0 0 12px rgba(75, 220, 255, 0.7);
+        0 0 12px rgba(60, 220, 255, 0.7);
 }
 
-.spider-symbol {
-    font-size: 22px;
+.brand-mark {
+    color: #ff3155;
 
-    filter:
-        drop-shadow(
-            0 0 7px rgba(255, 35, 65, 0.8)
-        );
+    font-size: 21px;
+
+    text-shadow:
+        0 0 10px rgba(255, 40, 80, 0.8);
 }
 
 
 /* =========================================================
-   ONLINE STATUS
+   SYSTEM STATUS
    ========================================================= */
 
-.status {
+.system-status {
     display: flex;
 
     align-items: center;
 
     gap: 7px;
 
-    font-size: 9px;
+    color: #6ed8f5;
 
-    letter-spacing: 2px;
+    font-size: 8px;
 
-    color: #8edfff;
+    letter-spacing: 1.8px;
 }
 
 .status-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
 
     border-radius: 50%;
 
-    background: #47ffb2;
+    background: #43ffad;
 
     box-shadow:
-        0 0 6px #47ffb2,
-        0 0 15px rgba(71, 255, 178, 0.8);
-
-    animation:
-        statusPulse 2s infinite;
+        0 0 7px #43ffad;
 }
 
 
 /* =========================================================
-   MAIN ASSISTANT AREA
+   MAIN HUD
    ========================================================= */
 
-#assistant-area {
+.hud {
     position: absolute;
 
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 188px;
+    inset:
+        58px 0 0 0;
 
-    overflow: hidden;
+    z-index: 5;
+}
+
+
+/* =========================================================
+   HUD PANELS
+   ========================================================= */
+
+.hud-panel {
+    position: absolute;
+
+    top: 18px;
+
+    width: 150px;
+
+    padding: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 39, 62, 0.65),
+            rgba(3, 17, 30, 0.62)
+        );
+
+    border:
+        1px solid rgba(60, 210, 255, 0.27);
+
+    box-shadow:
+        inset 0 0 18px rgba(20, 180, 255, 0.035);
+
+    backdrop-filter: blur(7px);
+
+    clip-path:
+        polygon(
+            0 0,
+            calc(100% - 10px) 0,
+            100% 10px,
+            100% 100%,
+            0 100%
+        );
+}
+
+.panel-left {
+    left: 14px;
+}
+
+.panel-right {
+    right: 14px;
+}
+
+
+/* =========================================================
+   PANEL TITLE
+   ========================================================= */
+
+.panel-title {
+    margin-bottom: 10px;
+
+    padding-bottom: 6px;
+
+    border-bottom:
+        1px solid rgba(70, 210, 255, 0.2);
+
+    color: #51d9ff;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   DATA
+   ========================================================= */
+
+.data-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-top: 7px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.8px;
+}
+
+.data-row span {
+    color: #527e91;
+}
+
+.data-row strong {
+    color: #9de9ff;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   CORE AREA
+   ========================================================= */
+
+.core-area {
+    position: absolute;
+
+    left: 50%;
+    top: 47%;
+
+    width: min(55vw, 260px);
+    height: min(55vw, 260px);
+
+    transform:
+        translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   CORE RINGS
+   ========================================================= */
+
+.core-ring {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+.ring-one {
+    width: 100%;
+    height: 100%;
+
+    border:
+        1px solid rgba(55, 220, 255, 0.25);
+
+    border-top-color:
+        rgba(55, 220, 255, 0.85);
+
+    animation:
+        spinSlow 12s linear infinite;
+}
+
+.ring-two {
+    width: 78%;
+    height: 78%;
+
+    border:
+        1px dashed rgba(55, 220, 255, 0.4);
+
+    border-right-color:
+        rgba(255, 45, 80, 0.75);
+
+    animation:
+        spinReverse 8s linear infinite;
+}
+
+.ring-three {
+    width: 58%;
+    height: 58%;
+
+    border:
+        1px solid rgba(255, 50, 80, 0.35);
+
+    border-left-color:
+        rgba(255, 50, 80, 0.9);
+
+    animation:
+        spinSlow 6s linear infinite;
+}
+
+
+/* =========================================================
+   CORE
+   ========================================================= */
+
+.core-core {
+    position: relative;
+
+    width: 37%;
+    height: 37%;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #1c7596,
+            #092a42 58%,
+            #041321 100%
+        );
+
+    border:
+        1px solid rgba(100, 230, 255, 0.8);
+
+    box-shadow:
+        0 0 18px rgba(35, 210, 255, 0.45),
+        inset 0 0 20px rgba(60, 220, 255, 0.18);
 
     z-index: 3;
 }
 
+.core-symbol {
+    color: #cfffff;
 
-/* =========================================================
-   HUD CORNER MARKS
-   ========================================================= */
+    font-size: 24px;
 
-#assistant-area::before {
-    content: "";
+    line-height: 1;
 
-    position: absolute;
-
-    inset: 18px;
-
-    border-top:
-        1px solid rgba(62, 214, 255, 0.3);
-
-    border-left:
-        1px solid rgba(62, 214, 255, 0.3);
-
-    clip-path:
-        polygon(
-            0 0,
-            110px 0,
-            110px 2px,
-            2px 2px,
-            2px 110px,
-            0 110px
-        );
-
-    pointer-events: none;
+    text-shadow:
+        0 0 10px rgba(80, 230, 255, 0.9);
 }
 
-#assistant-area::after {
-    content: "";
+.core-label {
+    margin-top: 6px;
 
-    position: absolute;
+    color: #d9faff;
 
-    right: 18px;
-    top: 18px;
+    font-size: 8px;
 
-    width: 110px;
-    height: 110px;
+    font-weight: 800;
 
-    border-top:
-        1px solid rgba(255, 45, 75, 0.35);
+    letter-spacing: 2px;
+}
 
-    border-right:
-        1px solid rgba(255, 45, 75, 0.35);
+.core-state {
+    margin-top: 4px;
 
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            100% 100%,
-            calc(100% - 2px) 100%,
-            calc(100% - 2px) 2px,
-            0 2px
-        );
+    color: #ff5270;
 
-    pointer-events: none;
+    font-size: 6px;
+
+    letter-spacing: 1.5px;
 }
 
 
 /* =========================================================
-   SPEECH BUBBLE
+   SPEECH
    ========================================================= */
 
 .speech-bubble {
     position: absolute;
 
-    top: 10%;
     left: 50%;
+    top: 69%;
 
-    width: min(86%, 410px);
+    width:
+        min(
+            calc(100% - 40px),
+            460px
+        );
 
-    padding: 16px 18px;
+    padding: 12px 15px;
 
     transform:
         translateX(-50%);
@@ -339,466 +507,56 @@ body {
     background:
         linear-gradient(
             135deg,
-            rgba(10, 42, 67, 0.82),
-            rgba(4, 18, 33, 0.86)
+            rgba(8, 35, 56, 0.88),
+            rgba(3, 15, 27, 0.88)
         );
 
     border:
-        1px solid rgba(66, 216, 255, 0.55);
+        1px solid rgba(65, 215, 255, 0.35);
 
     border-left:
-        3px solid #f1264d;
-
-    clip-path:
-        polygon(
-            0 0,
-            calc(100% - 14px) 0,
-            100% 14px,
-            100% 100%,
-            0 100%
-        );
+        3px solid #f02c51;
 
     box-shadow:
-        0 0 25px rgba(0, 185, 255, 0.12),
-        inset 0 0 30px rgba(0, 150, 255, 0.035);
+        0 0 20px rgba(0, 150, 255, 0.08);
 
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(8px);
 
-    z-index: 20;
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+    z-index: 8;
 }
 
-.speech-bubble::before {
-    content: "";
+.speech-name {
+    margin-bottom: 5px;
 
-    position: absolute;
+    color: #ff3d60;
 
-    top: 0;
-    left: 14px;
-
-    width: 45px;
-    height: 1px;
-
-    background: #ff3156;
-
-    box-shadow:
-        0 0 8px rgba(255, 40, 80, 0.8);
-}
-
-.speech-bubble::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: -8px;
-    left: 50%;
-
-    width: 16px;
-    height: 16px;
-
-    background: #071728;
-
-    border-right:
-        1px solid rgba(66, 216, 255, 0.55);
-
-    border-bottom:
-        1px solid rgba(66, 216, 255, 0.55);
-
-    transform:
-        translateX(-50%)
-        rotate(45deg);
-}
-
-.speech-bubble.hidden {
-    opacity: 0;
-
-    transform:
-        translateX(-50%)
-        translateY(12px);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   SPEECH TEXT
-   ========================================================= */
-
-#speech-name {
-    margin-bottom: 7px;
-
-    color: #ff3a5c;
-
-    font-size: 9px;
+    font-size: 7px;
 
     font-weight: 800;
 
-    letter-spacing: 3px;
-
-    text-shadow:
-        0 0 8px rgba(255, 40, 75, 0.7);
+    letter-spacing: 2px;
 }
 
-#speech-text {
-    color: #dff8ff;
+.speech-text {
+    color: #d8f7ff;
 
-    font-size: 14px;
+    font-size: 13px;
 
-    line-height: 1.55;
-
-    text-shadow:
-        0 0 5px rgba(100, 220, 255, 0.25);
+    line-height: 1.45;
 }
 
 
 /* =========================================================
-   CHARACTER
+   SCAN LINE
    ========================================================= */
 
-.character {
+.scan-line {
     position: absolute;
 
-    left: 50%;
-    bottom: 23px;
+    left: 15%;
+    right: 15%;
 
-    width: 76px;
-    height: 145px;
-
-    transform:
-        translateX(-50%);
-
-    cursor: pointer;
-
-    z-index: 15;
-
-    animation:
-        idleBounce 1.8s ease-in-out infinite;
-
-    filter:
-        drop-shadow(
-            0 12px 15px rgba(0, 0, 0, 0.65)
-        );
-
-    user-select: none;
-
-    touch-action: manipulation;
-
-    transition:
-        filter 0.2s ease;
-}
-
-.character:hover {
-    filter:
-        drop-shadow(
-            0 0 15px rgba(255, 35, 65, 0.5)
-        );
-}
-
-.character:active {
-    transform:
-        translateX(-50%)
-        scale(0.92);
-}
-
-
-/* =========================================================
-   CHARACTER HEAD
-   ========================================================= */
-
-.head {
-    position: absolute;
-
-    top: 0;
-    left: 50%;
-
-    width: 62px;
-    height: 68px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius:
-        48% 48% 44% 44%;
-
-    background:
-        radial-gradient(
-            circle at 35% 25%,
-            #ff586e,
-            #dc1234 48%,
-            #710a1d 100%
-        );
-
-    border:
-        2px solid #ff536b;
-
-    box-shadow:
-        inset -8px -8px 15px rgba(0, 0, 0, 0.35),
-        0 0 15px rgba(255, 30, 65, 0.25);
-
-    overflow: hidden;
-}
-
-
-/* Webbing */
-
-.head::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 12px,
-            rgba(0, 0, 0, 0.25) 13px 14px
-        );
-
-    opacity: 0.75;
-}
-
-.head::after {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    top: -5px;
-
-    width: 2px;
-    height: 80px;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        rgba(0, 0, 0, 0.25);
-}
-
-
-/* =========================================================
-   EYES
-   ========================================================= */
-
-.eye {
-    position: absolute;
-
-    top: 24px;
-
-    width: 21px;
-    height: 27px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #d9f7ff
-        );
-
-    border:
-        2px solid #03070a;
-
-    z-index: 5;
-
-    box-shadow:
-        0 0 6px rgba(220, 250, 255, 0.7);
-}
-
-.left-eye {
-    left: 10px;
-
-    clip-path:
-        polygon(
-            0 20%,
-            100% 0,
-            78% 100%,
-            10% 78%
-        );
-}
-
-.right-eye {
-    right: 10px;
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 20%,
-            90% 78%,
-            22% 100%
-        );
-}
-
-
-/* =========================================================
-   CHARACTER BODY
-   ========================================================= */
-
-.body {
-    position: absolute;
-
-    top: 62px;
-    left: 50%;
-
-    width: 50px;
-    height: 63px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius:
-        16px 16px 10px 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #72091c,
-            #e31b3e 48%,
-            #73091c
-        );
-
-    border:
-        2px solid #ff405d;
-
-    box-shadow:
-        inset 0 0 12px rgba(255, 255, 255, 0.05);
-}
-
-
-/* =========================================================
-   SPIDER EMBLEM
-   ========================================================= */
-
-.spider-emblem {
-    position: absolute;
-
-    top: 15px;
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    font-size: 20px;
-
-    filter:
-        grayscale(1)
-        brightness(0);
-
-    text-shadow:
-        0 0 8px white;
-}
-
-
-/* =========================================================
-   ARMS
-   ========================================================= */
-
-.arm {
-    position: absolute;
-
-    top: 68px;
-
-    width: 15px;
-    height: 58px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #cf1534,
-            #68091b
-        );
-
-    border:
-        2px solid #ff405d;
-
-    transform-origin:
-        top center;
-}
-
-.left-arm {
-    left: 4px;
-
-    transform:
-        rotate(15deg);
-}
-
-.right-arm {
-    right: 4px;
-
-    transform:
-        rotate(-15deg);
-}
-
-
-/* =========================================================
-   LEGS
-   ========================================================= */
-
-.leg {
-    position: absolute;
-
-    top: 116px;
-
-    width: 17px;
-    height: 38px;
-
-    border-radius:
-        0 0 9px 9px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #76091c,
-            #35030c
-        );
-
-    border:
-        2px solid #ff405d;
-
-    transform-origin:
-        top center;
-}
-
-.left-leg {
-    left: 18px;
-
-    transform:
-        rotate(8deg);
-}
-
-.right-leg {
-    right: 18px;
-
-    transform:
-        rotate(-8deg);
-}
-
-
-/* =========================================================
-   FLOOR HUD
-   ========================================================= */
-
-.floor {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 35px;
-}
-
-.floor-line {
-    position: absolute;
-
-    left: 8%;
-    right: 8%;
-    top: 50%;
+    top: 42%;
 
     height: 1px;
 
@@ -806,291 +564,274 @@ body {
         linear-gradient(
             90deg,
             transparent,
-            #3ad8ff,
+            rgba(50, 220, 255, 0.4),
             transparent
         );
 
-    box-shadow:
-        0 0 12px rgba(45, 210, 255, 0.65);
-}
+    opacity: 0.45;
 
-.floor::before,
-.floor::after {
-    content: "";
-
-    position: absolute;
-
-    top: calc(50% - 8px);
-
-    width: 55px;
-    height: 16px;
-
-    border-top:
-        1px solid rgba(65, 215, 255, 0.4);
-
-    border-bottom:
-        1px solid rgba(65, 215, 255, 0.15);
-}
-
-.floor::before {
-    left: 10%;
-}
-
-.floor::after {
-    right: 10%;
+    pointer-events: none;
 }
 
 
 /* =========================================================
-   CONTROL PANEL
+   CROSSHAIRS
    ========================================================= */
 
-.control-panel {
+.crosshair {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    color: rgba(75, 215, 255, 0.5);
+
+    font-size: 14px;
+
+    z-index: 4;
+}
+
+.top-left {
+    left: 15px;
+    top: 105px;
+}
+
+.top-right {
+    right: 15px;
+    top: 105px;
+}
+
+.bottom-left {
+    left: 15px;
+    bottom: 110px;
+}
+
+.bottom-right {
+    right: 15px;
+    bottom: 110px;
+}
+
+
+/* =========================================================
+   COMMAND AREA
+   ========================================================= */
+
+.command-area {
     position: absolute;
 
     left: 0;
     right: 0;
-    bottom: 50px;
+    bottom: 42px;
 
     padding:
-        10px 16px 8px;
+        10px 14px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(6, 25, 42, 0.78),
-            rgba(3, 13, 25, 0.94)
+            rgba(4, 20, 34, 0.55),
+            rgba(2, 10, 18, 0.94)
         );
 
     border-top:
-        1px solid rgba(52, 214, 255, 0.35);
+        1px solid rgba(55, 210, 255, 0.25);
 
-    box-shadow:
-        0 -10px 35px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
 
-    backdrop-filter:
-        blur(14px);
-
-    z-index: 40;
+    z-index: 15;
 }
 
 
 /* =========================================================
-   INSTRUCTION
+   COMMAND LABEL
    ========================================================= */
 
-.instruction {
-    margin-bottom: 8px;
+.command-label {
+    margin-bottom: 7px;
 
     text-align: center;
 
-    color: #72cce8;
+    color: #4b8da4;
 
-    font-size: 9px;
+    font-size: 7px;
 
     letter-spacing: 2px;
-
-    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   MICROPHONE
+   COMMAND ROW
+   ========================================================= */
+
+.command-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   MIC
    ========================================================= */
 
 .mic-button {
-    display: block;
+    flex:
+        0 0 46px;
 
-    width: 54px;
-    height: 54px;
-
-    margin:
-        0 auto 10px;
-
-    border-radius: 50%;
+    width: 46px;
+    height: 42px;
 
     border:
-        1px solid rgba(75, 220, 255, 0.8);
+        1px solid rgba(70, 215, 255, 0.55);
+
+    border-radius: 7px;
 
     background:
-        radial-gradient(
-            circle,
-            rgba(25, 100, 140, 0.55),
-            rgba(4, 25, 43, 0.95)
+        linear-gradient(
+            145deg,
+            #103c57,
+            #071a2b
         );
 
-    color: #eaffff;
+    color: #dfffff;
 
-    font-size: 21px;
+    font-size: 17px;
 
     cursor: pointer;
 
-    box-shadow:
-        0 0 10px rgba(30, 200, 255, 0.25),
-        inset 0 0 15px rgba(50, 200, 255, 0.1);
-
-    transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
-}
-
-.mic-button:hover {
-    box-shadow:
-        0 0 22px rgba(30, 200, 255, 0.55);
+    touch-action: manipulation;
 }
 
 .mic-button:active {
-    transform:
-        scale(0.9);
+    transform: scale(0.94);
 }
 
 .mic-button.listening {
-    animation:
-        listeningPulse 1s infinite;
+    border-color: #ff365a;
+
+    box-shadow:
+        0 0 18px rgba(255, 40, 80, 0.5);
 }
 
 
 /* =========================================================
-   COMMAND INPUT
+   INPUT
    ========================================================= */
-
-.command-input {
-    display: flex;
-
-    width: 100%;
-
-    gap: 8px;
-}
 
 #text-input {
     flex: 1;
 
     min-width: 0;
 
-    height: 44px;
+    height: 42px;
 
     padding:
-        0 14px;
+        0 12px;
 
     border:
-        1px solid rgba(67, 211, 255, 0.3);
+        1px solid rgba(65, 210, 255, 0.3);
 
-    border-radius: 8px;
+    border-radius: 7px;
 
     outline: none;
 
     background:
-        rgba(6, 32, 53, 0.75);
+        rgba(5, 26, 43, 0.85);
 
     color: #e8fbff;
 
-    font-size: 14px;
-
-    box-shadow:
-        inset 0 0 15px rgba(0, 160, 255, 0.04);
+    font-size: 13px;
 }
 
 #text-input::placeholder {
-    color: #6190a3;
+    color: #547d8d;
 }
 
 #text-input:focus {
     border-color:
-        rgba(70, 220, 255, 0.8);
+        rgba(70, 220, 255, 0.75);
 
     box-shadow:
-        0 0 15px rgba(40, 200, 255, 0.12),
-        inset 0 0 12px rgba(0, 180, 255, 0.05);
+        0 0 12px rgba(50, 200, 255, 0.1);
 }
 
 
 /* =========================================================
-   SEND BUTTON
+   SEND
    ========================================================= */
 
-#send-button {
-    width: 46px;
-    height: 44px;
+.send-button {
+    flex:
+        0 0 45px;
+
+    width: 45px;
+    height: 42px;
 
     border:
-        1px solid rgba(255, 55, 85, 0.7);
+        1px solid rgba(255, 55, 85, 0.65);
 
-    border-radius: 8px;
+    border-radius: 7px;
 
     background:
         linear-gradient(
-            135deg,
-            #e52346,
-            #9c0e29
+            145deg,
+            #d92749,
+            #850d27
         );
 
     color: white;
 
-    font-size: 18px;
+    font-size: 17px;
 
     cursor: pointer;
 
-    box-shadow:
-        0 0 12px rgba(255, 30, 60, 0.18);
+    touch-action: manipulation;
 }
 
-#send-button:hover {
-    box-shadow:
-        0 0 20px rgba(255, 30, 60, 0.45);
-}
-
-#send-button:active {
-    transform:
-        scale(0.92);
+.send-button:active {
+    transform: scale(0.94);
 }
 
 
 /* =========================================================
-   INFORMATION PANEL
+   BOTTOM DATA
    ========================================================= */
 
-.info-panel {
+.bottom-data {
     position: absolute;
 
-    left: 16px;
-    right: 16px;
+    left: 14px;
+    right: 14px;
     bottom: 8px;
 
     display: flex;
 
     justify-content: space-between;
 
-    z-index: 60;
-}
+    color: #426c7e;
 
-.info-item {
-    display: flex;
-
-    gap: 6px;
-
-    font-size: 8px;
+    font-size: 6px;
 
     letter-spacing: 1px;
+
+    z-index: 20;
 }
 
-.info-label {
-    color: #47788c;
-}
+.tiny-dot {
+    display: inline-block;
 
-.info-value {
-    color: #9bd9e9;
+    width: 5px;
+    height: 5px;
 
-    text-shadow:
-        0 0 5px rgba(60, 220, 255, 0.3);
-}
+    margin-right: 4px;
 
+    border-radius: 50%;
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer {
-    display: none;
+    background: #45ffae;
 }
 
 
@@ -1098,81 +839,141 @@ footer {
    ANIMATIONS
    ========================================================= */
 
-@keyframes idleBounce {
+@keyframes spinSlow {
 
-    0%,
-    100% {
-        margin-bottom: 0;
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
     }
 
-    50% {
-        margin-bottom: 5px;
-    }
-}
-
-
-@keyframes statusPulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.35;
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
     }
 }
 
+@keyframes spinReverse {
 
-@keyframes listeningPulse {
-
-    0% {
-        box-shadow:
-            0 0 5px rgba(40, 210, 255, 0.2);
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
     }
 
-    50% {
-        box-shadow:
-            0 0 30px rgba(40, 210, 255, 0.8),
-            0 0 55px rgba(255, 35, 65, 0.25);
-    }
-
-    100% {
-        box-shadow:
-            0 0 5px rgba(40, 210, 255, 0.2);
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
     }
 }
 
 
 /* =========================================================
-   SMALL PHONE
+   LANDSCAPE PHONE
    ========================================================= */
 
-@media (max-height: 650px) {
+@media (orientation: landscape) and (max-height: 600px) {
 
-    .character {
-        transform:
-            translateX(-50%)
-            scale(0.82);
+    .top-bar {
+        height: 46px;
+    }
 
-        transform-origin:
-            bottom center;
+    .hud {
+        inset:
+            46px 0 0 0;
+    }
+
+    .hud-panel {
+        top: 10px;
+
+        width: 135px;
+
+        padding: 8px;
+    }
+
+    .core-area {
+        top: 43%;
+
+        width: min(40vh, 210px);
+        height: min(40vh, 210px);
     }
 
     .speech-bubble {
-        top: 7%;
+        top: 65%;
+
+        width: min(48%, 430px);
+
+        padding: 8px 12px;
     }
 
-    .mic-button {
-        width: 46px;
-        height: 46px;
-
-        margin-bottom: 6px;
+    .speech-text {
+        font-size: 11px;
     }
 
-    #text-input,
-    #send-button {
-        height: 40px;
+    .command-area {
+        left: 50%;
+
+        width: 55%;
+
+        transform:
+            translateX(-50%);
+
+        bottom: 22px;
+
+        padding: 6px 10px;
+    }
+
+    .command-label {
+        display: none;
+    }
+
+    .bottom-data {
+        bottom: 4px;
+    }
+
+    .crosshair.bottom-left,
+    .crosshair.bottom-right {
+        bottom: 60px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PORTRAIT
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .hud-panel {
+        width: 125px;
+
+        padding: 9px;
+    }
+
+    .panel-left {
+        left: 8px;
+    }
+
+    .panel-right {
+        right: 8px;
+    }
+
+    .core-area {
+        width: 210px;
+        height: 210px;
+    }
+
+    .speech-bubble {
+        top: 68%;
+
+        width:
+            calc(100% - 28px);
+    }
+
+    .bottom-data {
+        font-size: 5px;
     }
 }
 
@@ -1181,20 +982,43 @@ footer {
    TABLET / DESKTOP
    ========================================================= */
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
 
     #app {
-        max-width: 540px;
+        max-width: 1000px;
 
         margin: 0 auto;
 
         border-left:
-            1px solid rgba(70, 210, 255, 0.12);
+            1px solid rgba(60, 210, 255, 0.1);
 
         border-right:
-            1px solid rgba(70, 210, 255, 0.12);
+            1px solid rgba(60, 210, 255, 0.1);
 
         box-shadow:
-            0 0 80px rgba(0, 120, 200, 0.15);
+            0 0 80px rgba(0, 130, 200, 0.12);
     }
-                       }
+
+    .core-area {
+        width: 300px;
+        height: 300px;
+    }
+
+    .speech-bubble {
+        width: 440px;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .core-ring {
+        animation: none;
+    }
+}
+```
+   
