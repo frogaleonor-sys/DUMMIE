@@ -1,7 +1,9 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,29 +13,39 @@
 
     <meta
         name="theme-color"
-        content="#06111f"
+        content="#030b15"
     >
 
     <title>DUMMIE // AI HUD</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
+
 
 <body>
 
 <div id="app">
 
-    <!-- =========================================
-         TOP SYSTEM BAR
-         ========================================= -->
+    <!-- TOP BAR -->
 
     <header class="top-bar">
 
         <div class="brand">
-            <span class="brand-mark">◈</span>
-            <span>DUMMIE</span>
+
+            <span class="brand-mark">
+                ◈
+            </span>
+
+            <span>
+                DUMMIE
+            </span>
+
         </div>
+
 
         <div class="system-status">
 
@@ -51,13 +63,12 @@
     </header>
 
 
-    <!-- =========================================
-         MAIN HUD
-         ========================================= -->
+    <!-- MAIN HUD -->
 
     <main class="hud">
 
-        <!-- Left / Top information -->
+
+        <!-- LEFT SYSTEM PANEL -->
 
         <section class="hud-panel panel-left">
 
@@ -71,7 +82,7 @@
             </div>
 
             <div class="data-row">
-                <span>AI STATUS</span>
+                <span>AI</span>
                 <strong id="ai-status">
                     READY
                 </strong>
@@ -79,22 +90,18 @@
 
             <div class="data-row">
                 <span>VOICE</span>
-                <strong>
-                    ACTIVE
-                </strong>
+                <strong>ACTIVE</strong>
             </div>
 
             <div class="data-row">
                 <span>NETWORK</span>
-                <strong>
-                    LOCAL
-                </strong>
+                <strong>LOCAL</strong>
             </div>
 
         </section>
 
 
-        <!-- Right information -->
+        <!-- RIGHT TELEMETRY PANEL -->
 
         <section class="hud-panel panel-right">
 
@@ -104,7 +111,6 @@
 
             <div class="data-row">
                 <span>TIME</span>
-
                 <strong id="hud-time">
                     --:--
                 </strong>
@@ -112,7 +118,6 @@
 
             <div class="data-row">
                 <span>DATE</span>
-
                 <strong id="hud-date">
                     ----
                 </strong>
@@ -120,26 +125,25 @@
 
             <div class="data-row">
                 <span>MODE</span>
-
-                <strong>
-                    PERSONAL
-                </strong>
+                <strong>PERSONAL</strong>
             </div>
 
         </section>
 
 
-        <!-- =====================================
-             CENTRAL AI CORE
-             ===================================== -->
+        <!-- AI CORE -->
 
-        <section class="core-area">
+        <section
+            class="core-area"
+            id="core-area"
+        >
 
             <div class="core-ring ring-one"></div>
 
             <div class="core-ring ring-two"></div>
 
             <div class="core-ring ring-three"></div>
+
 
             <div class="core-core">
 
@@ -163,9 +167,7 @@
         </section>
 
 
-        <!-- =====================================
-             RESPONSE
-             ===================================== -->
+        <!-- RESPONSE -->
 
         <section
             id="speech-bubble"
@@ -190,32 +192,20 @@
         </section>
 
 
-        <!-- =====================================
-             DECORATIVE HUD ELEMENTS
-             ===================================== -->
+        <!-- DECORATION -->
 
         <div class="scan-line"></div>
 
-        <div class="crosshair top-left">
-            +
-        </div>
+        <div class="crosshair top-left">+</div>
 
-        <div class="crosshair top-right">
-            +
-        </div>
+        <div class="crosshair top-right">+</div>
 
-        <div class="crosshair bottom-left">
-            +
-        </div>
+        <div class="crosshair bottom-left">+</div>
 
-        <div class="crosshair bottom-right">
-            +
-        </div>
+        <div class="crosshair bottom-right">+</div>
 
 
-        <!-- =====================================
-             COMMAND AREA
-             ===================================== -->
+        <!-- COMMAND AREA -->
 
         <section class="command-area">
 
@@ -223,15 +213,18 @@
                 COMMAND INTERFACE
             </div>
 
+
             <div class="command-row">
 
                 <button
                     id="mic-button"
                     class="mic-button"
+                    type="button"
                     aria-label="Voice command"
                 >
                     🎙
                 </button>
+
 
                 <input
                     id="text-input"
@@ -240,9 +233,11 @@
                     placeholder="Speak or type a command..."
                 >
 
+
                 <button
                     id="send-button"
                     class="send-button"
+                    type="button"
                     aria-label="Send command"
                 >
                     ➤
@@ -253,9 +248,7 @@
         </section>
 
 
-        <!-- =====================================
-             BOTTOM DATA
-             ===================================== -->
+        <!-- FOOTER -->
 
         <section class="bottom-data">
 
@@ -274,6 +267,7 @@
 
         </section>
 
+
     </main>
 
 </div>
@@ -282,5 +276,6 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>
 ```
