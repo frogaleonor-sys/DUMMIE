@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#02070d"
     >
 
     <title>ECHO-01</title>
@@ -13,283 +21,281 @@
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
+
 
 <body>
 
-    <div id="app">
+<div id="app">
 
-        <header>
 
-            <div>
-                <span class="signal-dot"></span>
-                ECHO-01
+    <!-- TOP BAR -->
+
+    <header>
+
+        <div>
+
+            <span class="signal-dot"></span>
+
+            ECHO-01
+
+        </div>
+
+
+        <div id="connection">
+
+            SIGNAL ONLINE
+
+        </div>
+
+    </header>
+
+
+
+    <!-- MAIN HUD -->
+
+    <main>
+
+
+        <!-- WORLD MAP -->
+
+        <section class="map-section">
+
+            <div class="map-title">
+
+                PLANETARY SURVEILLANCE
+
             </div>
 
-            <div id="connection">
-                SIGNAL ONLINE
-            </div>
 
-        </header>
+            <div id="map">
 
 
-        <main>
-
-            <section class="map-section">
-
-                <div class="map-title">
-                    PLANETARY SURVEILLANCE
-                </div>
-
-                <div id="map">
-
-                    <div
-                        class="location city"
-                        data-name="Veyra City"
-                    >
-                        ●
-                        <span>VEYRA</span>
-                    </div>
-
-                    <div
-                        class="location ruins"
-                        data-name="Unknown Ruins"
-                    >
-                        ●
-                        <span>RUINS</span>
-                    </div>
-
-                    <div
-                        class="location signal"
-                        data-name="Unknown Signal"
-                    >
-                        ●
-                        <span>SIGNAL</span>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <section class="information">
-
-                <div class="panel">
-
-                    <div class="panel-title">
-                        SATELLITE STATUS
-                    </div>
-
-                    <p>
-                        SYSTEM
-                        <strong>ONLINE</strong>
-                    </p>
-
-                    <p>
-                        ORBIT
-                        <strong>STABLE</strong>
-                    </p>
-
-                    <p>
-                        SIGNAL
-                        <strong id="signal">
-                            72%
-                        </strong>
-                    </p>
-
-                    <p>
-                        ENERGY
-                        <strong>
-                            91%
-                        </strong>
-                    </p>
-
-                </div>
-
+                <!-- CITY -->
 
                 <div
-                    id="event"
-                    class="panel event"
+                    class="location city"
+                    data-name="Veyra City"
                 >
 
-                    <div class="panel-title">
-                        SYSTEM MESSAGE
-                    </div>
+                    ●
 
-                    <p>
-                        No anomalies detected.
-                    </p>
+                    <span>
+                        VEYRA
+                    </span>
 
                 </div>
 
-            </section>
 
-        </main>
+                <!-- RUINS -->
 
+                <div
+                    class="location ruins"
+                    data-name="Unknown Ruins"
+                >
 
-        <nav>
+                    ●
 
-            <button
-                class="active"
-                data-page="world"
-            >
-                🌍
-                <span>WORLD</span>
-            </button>
+                    <span>
+                        RUINS
+                    </span>
 
-            <button
-                data-page="signals"
-            >
-                📡
-                <span>SIGNALS</span>
-            </button>
-
-            <button
-                data-page="entity"
-            >
-                🤖
-                <span>ENTITY</span>
-            </button>
-
-            <button
-                data-page="archive"
-            >
-                📁
-                <span>ARCHIVE</span>
-            </button>
-
-        </nav>
-
-    </div>
+                </div>
 
 
-    <script>
+                <!-- SIGNAL -->
 
-const locations =
-    document.querySelectorAll(".location");
+                <div
+                    class="location signal"
+                    data-name="Unknown Signal"
+                >
 
-const eventBox =
-    document.getElementById("event");
+                    ●
 
-const signal =
-    document.getElementById("signal");
+                    <span>
+                        SIGNAL
+                    </span>
+
+                </div>
 
 
-locations.forEach(location => {
-
-    location.addEventListener("click", () => {
-
-        const name =
-            location.dataset.name;
-
-        eventBox.innerHTML = `
-            <div class="panel-title">
-                LOCATION DETECTED
             </div>
 
-            <p>
-                TARGET
-                <strong>${name}</strong>
-            </p>
-
-            <p>
-                STATUS
-                <strong>SCANNING</strong>
-            </p>
-        `;
-
-        signal.textContent =
-            Math.floor(
-                Math.random() * 30 + 65
-            ) + "%";
-
-    });
-
-});
+        </section>
 
 
-document
-    .querySelectorAll("nav button")
-    .forEach(button => {
 
-        button.addEventListener("click", () => {
+        <!-- INFORMATION -->
 
-            document
-                .querySelectorAll("nav button")
-                .forEach(b =>
-                    b.classList.remove("active")
-                );
-
-            button.classList.add("active");
-
-            const page =
-                button.dataset.page;
+        <section class="information">
 
 
-            if (page === "signals") {
+            <!-- SATELLITE STATUS -->
 
-                eventBox.innerHTML = `
-                    <div class="panel-title">
-                        SIGNAL NETWORK
-                    </div>
+            <div class="panel">
 
-                    <p>
-                        UNKNOWN SIGNAL
-                        <strong>DETECTED</strong>
-                    </p>
-                `;
+                <div class="panel-title">
 
-            }
+                    SATELLITE STATUS
+
+                </div>
 
 
-            if (page === "entity") {
+                <p>
 
-                eventBox.innerHTML = `
-                    <div class="panel-title">
-                        ENTITY DATABASE
-                    </div>
+                    SYSTEM
 
-                    <p>
-                        KNOWN ENTITIES
-                        <strong>0</strong>
-                    </p>
-                `;
+                    <strong>
+                        ONLINE
+                    </strong>
 
-            }
+                </p>
 
 
-            if (page === "archive") {
+                <p>
 
-                eventBox.innerHTML = `
-                    <div class="panel-title">
-                        ARCHIVE
-                    </div>
+                    ORBIT
 
-                    <p>
-                        DISCOVERIES
-                        <strong>0</strong>
-                    </p>
-                `;
+                    <strong>
+                        STABLE
+                    </strong>
 
-            }
+                </p>
 
 
-            if (page === "world") {
+                <p>
 
-                eventBox.innerHTML = `
-                    <div class="panel-title">
-                        SYSTEM MESSAGE
-                    </div>
+                    SIGNAL
 
-                    <p>
-                        No anomalies detected.
-                    </p>
-                `;
+                    <strong id="signal">
+                        72%
+                    </strong>
 
-            }
+                </p>
 
-        });
 
-    });
+                <p>
 
-    </script>
+                    ENERGY
+
+                    <strong>
+                        91%
+                    </strong>
+
+                </p>
+
+            </div>
+
+
+
+            <!-- EVENT PANEL -->
+
+            <div
+                id="event"
+                class="panel event"
+            >
+
+                <div class="panel-title">
+
+                    SYSTEM MESSAGE
+
+                </div>
+
+
+                <p>
+
+                    No anomalies detected.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+
+        <button
+            class="active"
+            data-page="world"
+            type="button"
+        >
+
+            🌍
+
+            <span>
+                WORLD
+            </span>
+
+        </button>
+
+
+
+        <button
+            data-page="signals"
+            type="button"
+        >
+
+            📡
+
+            <span>
+                SIGNALS
+            </span>
+
+        </button>
+
+
+
+        <button
+            data-page="entity"
+            type="button"
+        >
+
+            🤖
+
+            <span>
+                ENTITY
+            </span>
+
+        </button>
+
+
+
+        <button
+            data-page="archive"
+            type="button"
+        >
+
+            📁
+
+            <span>
+                ARCHIVE
+            </span>
+
+        </button>
+
+
+    </nav>
+
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
